@@ -1,0 +1,105 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { caseStudies } from "@/data/case-studies";
+import { homeWork } from "@/data/home-content";
+import { Container } from "@/components/ui/container";
+import { SectionLabel } from "@/components/ui/section-label";
+import { Badge } from "@/components/ui/badge";
+import { HiArrowUpRight } from "react-icons/hi2";
+
+type Props = {
+  featuredCount?: number;
+};
+
+export function CaseStudiesPreviewSection({ featuredCount = 3 }: Props) {
+  const n = Math.min(Math.max(featuredCount, 1), caseStudies.length);
+  const featured = caseStudies.slice(0, n);
+  const many = n >= 3;
+  const gridClass = many
+    ? "grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3"
+    : "grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2";
+
+  return (
+    <section id="work" className="scroll-mt-28 bg-mm-cream py-12 text-mm-graphite sm:py-14 lg:scroll-mt-32 lg:py-16">
+      <Container>
+        <div className="flex flex-col gap-5 border-b border-mm-graphite/[0.08] pb-8 sm:flex-row sm:items-end sm:justify-between sm:pb-7">
+          <div className="min-w-0">
+            <SectionLabel className="text-mm-royal">{homeWork.label}</SectionLabel>
+            <h2 className="mt-2 font-display text-2xl font-semibold leading-[1.08] tracking-tight sm:text-[clamp(1.65rem,3.2vw,2.35rem)]">
+              {homeWork.headline}
+            </h2>
+            <p className="mt-2 max-w-xl font-editorial text-sm leading-snug text-mm-graphite/75 sm:mt-2.5 sm:text-[0.9375rem]">{homeWork.description}</p>
+          </div>
+          <Link
+            href="/case-studies"
+            className="group inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-mm-royal/15 bg-mm-white/60 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-royal backdrop-blur-sm transition hover:border-mm-royal/35 hover:bg-mm-white sm:self-auto"
+          >
+            All work
+            <HiArrowUpRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </div>
+
+        <div className={`mt-7 ${gridClass}`}>
+          {featured.map((item, index) => (
+            <motion.article
+              key={item.slug}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              className={
+                many
+                  ? "group/card flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-mm-graphite/[0.07] bg-mm-white/75 shadow-[0_12px_40px_-20px_rgba(30,27,24,0.12)] backdrop-blur-sm transition duration-300 hover:border-mm-royal/18 hover:shadow-[0_20px_48px_-24px_rgba(43,33,120,0.18)]"
+                  : "group/card flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-mm-graphite/[0.07] bg-mm-white/75 shadow-[0_12px_40px_-20px_rgba(30,27,24,0.12)] backdrop-blur-sm transition duration-300 hover:border-mm-royal/18 hover:shadow-[0_20px_48px_-24px_rgba(43,33,120,0.18)] sm:flex-row sm:items-stretch"
+              }
+            >
+              <Link
+                href={`/case-studies/${item.slug}`}
+                className={
+                  many
+                    ? "relative aspect-[16/9] w-full shrink-0 overflow-hidden sm:aspect-[16/9]"
+                    : "relative aspect-[16/10] w-full shrink-0 overflow-hidden sm:aspect-auto sm:min-h-[200px] sm:w-[min(46%,220px)] sm:max-w-[240px]"
+                }
+              >
+                <div className={`absolute inset-0 z-[1] bg-gradient-to-tr ${item.accent} opacity-55 mix-blend-multiply`} />
+                <Image
+                  src={item.heroImage}
+                  alt={item.brand}
+                  fill
+                  className="object-cover transition duration-500 ease-out group-hover/card:scale-[1.04]"
+                  sizes="(max-width:768px) 100vw, 240px"
+                />
+                <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-mm-graphite/55 via-transparent to-transparent" />
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 z-[3] flex flex-wrap items-center gap-1.5">
+                  <Badge className="border-mm-white/25 bg-mm-black/40 px-2 py-0 text-[8px] uppercase tracking-wider text-mm-cream backdrop-blur-sm">
+                    {item.category}
+                  </Badge>
+                </div>
+              </Link>
+
+              <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4 sm:px-5 sm:py-4">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.32em] text-mm-royal/70">{item.brand}</p>
+                <h3 className="mt-1.5 font-display text-lg font-semibold leading-snug tracking-tight text-mm-graphite line-clamp-2 sm:text-[1.0625rem]">
+                  <Link href={`/case-studies/${item.slug}`} className="transition hover:text-mm-royal">
+                    {item.title}
+                  </Link>
+                </h3>
+                <p className="mt-2 font-editorial text-[13px] leading-relaxed text-mm-graphite/72 line-clamp-2">{item.excerpt}</p>
+                <Link
+                  href={`/case-studies/${item.slug}`}
+                  className="mt-3 inline-flex w-fit items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.3em] text-mm-royal transition hover:gap-2 sm:mt-3.5"
+                >
+                  Case file
+                  <HiArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                </Link>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
