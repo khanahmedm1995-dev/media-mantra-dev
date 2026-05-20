@@ -15,9 +15,9 @@ const staticRoutes = [
   "/contact",
   "/privacy",
   "/terms",
-  "/india",
-  "/uae",
-  "/singapore",
+  "/in",
+  "/ae",
+  "/sg",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { MagneticWrap } from "@/components/motion/magnetic-wrap";
 import { Container } from "@/components/ui/container";
 import { homeCta } from "@/data/home-content";
+import { useContactLead } from "@/components/contact/contact-lead-context";
+import { cn } from "@/lib/cn";
 
 const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
   id: i,
@@ -17,21 +19,39 @@ const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
 const CTA_VIDEO =
   "https://videos.pexels.com/video-files/2611250/2611250-uhd_2560_1440_25fps.mp4";
 
-export function GlobalCtaSection() {
+type Props = {
+  /** Tighter footprint for homepage close — aligns with briefing */
+  compact?: boolean;
+};
+
+export function GlobalCtaSection({ compact = false }: Props) {
+  const { openContact } = useContactLead();
+  const particles = compact ? PARTICLES.slice(0, 8) : PARTICLES;
+
   return (
-    <section className="relative isolate overflow-hidden py-28 lg:py-36">
+    <section
+      className={cn("relative isolate overflow-hidden", compact ? "py-16 lg:py-20" : "py-28 lg:py-36")}
+    >
       <video
-        className="absolute inset-0 h-full w-full object-cover opacity-35"
+        className={cn(
+          "absolute inset-0 h-full w-full object-cover",
+          compact ? "opacity-28" : "opacity-35",
+        )}
         src={CTA_VIDEO}
         autoPlay
         muted
         loop
         playsInline
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-mm-black via-mm-royal/70 to-mm-black" />
+      <div
+        className={cn(
+          "absolute inset-0 bg-gradient-to-b from-mm-black",
+          compact ? "via-mm-royal/28 to-mm-black" : "via-mm-royal/45 to-mm-black",
+        )}
+      />
 
       <div className="pointer-events-none absolute inset-0">
-        {PARTICLES.map((p) => (
+        {particles.map((p) => (
           <motion.span
             key={p.id}
             className="absolute h-1 w-1 rounded-full bg-mm-gold/80 blur-[1px]"
@@ -53,7 +73,10 @@ export function GlobalCtaSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.08, duration: 0.9 }}
-          className="mx-auto max-w-[22ch] font-display text-[clamp(2.35rem,5.5vw,4.25rem)] font-semibold leading-[1.02] tracking-tight text-mm-cream"
+          className={cn(
+            "mx-auto max-w-[22ch] font-display font-semibold leading-[1.02] tracking-tight text-mm-cream",
+            compact ? "text-[clamp(1.65rem,4vw,3rem)]" : "text-[clamp(2.35rem,5.5vw,4.25rem)]",
+          )}
         >
           {homeCta.headline}
         </motion.h2>
@@ -62,7 +85,10 @@ export function GlobalCtaSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
-          className="mx-auto mt-8 max-w-3xl font-editorial text-lg leading-[1.7] text-mm-light md:text-xl"
+          className={cn(
+            "mx-auto max-w-3xl font-editorial leading-[1.7] text-mm-light",
+            compact ? "mt-5 text-base md:text-lg" : "mt-8 text-lg md:text-xl",
+          )}
         >
           {homeCta.description}
         </motion.p>
@@ -71,16 +97,27 @@ export function GlobalCtaSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.22 }}
-          className="mt-11 flex flex-wrap justify-center gap-6"
+          className={cn("flex flex-wrap justify-center gap-6", compact ? "mt-8" : "mt-11")}
         >
           <MagneticWrap>
-            <Link
-              href={homeCta.primary.href}
-              className="group inline-flex items-center gap-2 rounded-full bg-mm-gold px-11 py-4 text-[11px] font-semibold uppercase tracking-[0.32em] text-mm-graphite shadow-[0_0_55px_rgba(210,180,80,0.28)] transition hover:bg-mm-cream hover:shadow-[0_0_70px_rgba(255,255,227,0.35)]"
-            >
-              {homeCta.primary.label}
-              <HiArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
-            </Link>
+            {compact ? (
+              <button
+                type="button"
+                onClick={openContact}
+                className="group inline-flex items-center gap-2 rounded-full bg-mm-gold px-11 py-4 text-[11px] font-semibold uppercase tracking-[0.32em] text-mm-graphite shadow-[0_0_55px_rgba(210,180,80,0.28)] transition hover:bg-mm-cream hover:shadow-[0_0_70px_rgba(255,255,227,0.35)]"
+              >
+                {homeCta.primary.label}
+                <HiArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
+              </button>
+            ) : (
+              <Link
+                href={homeCta.primary.href}
+                className="group inline-flex items-center gap-2 rounded-full bg-mm-gold px-11 py-4 text-[11px] font-semibold uppercase tracking-[0.32em] text-mm-graphite shadow-[0_0_55px_rgba(210,180,80,0.28)] transition hover:bg-mm-cream hover:shadow-[0_0_70px_rgba(255,255,227,0.35)]"
+              >
+                {homeCta.primary.label}
+                <HiArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
+              </Link>
+            )}
           </MagneticWrap>
           <MagneticWrap strength={0.14}>
             <Link

@@ -1,7 +1,7 @@
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "Insights & Blog",
+  title: "Blog",
   pathname: "/blog",
   description: "Strategy essays, editorial POVs, and global communications perspectives from Media Mantra Global.",
 });

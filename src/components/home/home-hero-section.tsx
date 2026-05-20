@@ -6,12 +6,14 @@ import { useRef } from "react";
 import { HiArrowDown, HiSparkles } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
 import { MagneticWrap } from "@/components/motion/magnetic-wrap";
-import { homeHero, homeHeroAside } from "@/data/home-content";
+import { homeHero, homeHeroAside, homeHeroStory } from "@/data/home-content";
+import { useContactLead } from "@/components/contact/contact-lead-context";
 
 const HERO_VIDEO =
   "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_24fps.mp4";
 
 export function HomeHeroSection() {
+  const { openContact } = useContactLead();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
@@ -21,7 +23,7 @@ export function HomeHeroSection() {
     <section
       ref={ref}
       id="home"
-      className="relative isolate min-h-[100svh] overflow-hidden bg-mm-black"
+      className="relative isolate min-h-[100svh] overflow-hidden bg-mm-charcoal"
       aria-label="Homepage hero"
     >
       <video
@@ -47,7 +49,7 @@ export function HomeHeroSection() {
                 transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-light md:text-[11px]"
               >
-                <span className="inline-flex items-center gap-3 rounded-full border border-mm-white/12 bg-mm-white/[0.04] px-4 py-2 backdrop-blur-xl">
+                <span className="inline-flex items-center gap-3 rounded-full border border-mm-white/[0.07] bg-mm-white/[0.03] px-4 py-2 backdrop-blur-xl">
                   <HiSparkles className="text-mm-gold" aria-hidden />
                   {homeHero.chip}
                 </span>
@@ -114,8 +116,8 @@ export function HomeHeroSection() {
                 className="flex flex-wrap items-center gap-5"
               >
                 <MagneticWrap>
-                  <Button asChild size="lg" className="px-10">
-                    <Link href="/contact">Book a strategy call</Link>
+                  <Button type="button" size="lg" className="px-10" onClick={openContact}>
+                    Book a strategy call
                   </Button>
                 </MagneticWrap>
                 <MagneticWrap strength={0.12}>

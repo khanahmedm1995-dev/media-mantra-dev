@@ -36,7 +36,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
         <Image src={study.heroImage} alt={study.title} fill priority className="object-cover" sizes="100vw" />
         <div className={`absolute inset-0 bg-gradient-to-tr ${study.accent} opacity-85 mix-blend-multiply`} />
         <div className="absolute inset-0 bg-gradient-to-t from-mm-black via-mm-black/40 to-transparent" />
-        <Container className="relative flex h-full flex-col justify-end pb-12 pt-36">
+        <Container className="relative flex h-full flex-col justify-end pb-12 pt-28">
           <Link href="/case-studies" className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-cream/80">
             ← Cases
           </Link>

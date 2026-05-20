@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 
 export default function IndustriesPage() {
   return (
-    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-28 text-mm-cream lg:pt-36">
+    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-6 text-mm-cream lg:pt-8">
       <Container>
         <SectionLabel>Sectors</SectionLabel>
         <h1 className="mt-8 max-w-4xl font-display text-[clamp(2.65rem,5vw,4.25rem)] font-semibold">

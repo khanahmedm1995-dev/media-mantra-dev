@@ -44,7 +44,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   return (
     <main id="main-content" className="flex-1 bg-mm-black text-mm-cream">
       <section
-        className={`relative isolate overflow-hidden border-b border-mm-white/10 bg-gradient-to-br ${svc.heroGradient} pt-28 lg:pt-36`}
+        className={`relative isolate overflow-hidden border-b border-mm-white/10 bg-gradient-to-br ${svc.heroGradient} pt-10 lg:pt-14`}
       >
         <div className="absolute inset-0 bg-mm-black/40" />
         <Container className="relative pb-20">

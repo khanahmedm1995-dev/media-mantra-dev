@@ -8,7 +8,7 @@ export const metadata = createMetadata({
 
 export default function PrivacyPage() {
   return (
-    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-28 text-mm-cream lg:pt-36">
+    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-6 text-mm-cream lg:pt-8">
       <Container className="max-w-3xl space-y-6 text-mm-light leading-relaxed">
         <h1 className="font-display text-4xl font-semibold text-mm-cream">Privacy Policy</h1>
         <p>

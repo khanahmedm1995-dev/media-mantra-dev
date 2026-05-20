@@ -4,6 +4,7 @@ import { createMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { SectionLabel } from "@/components/ui/section-label";
 import { Badge } from "@/components/ui/badge";
+import { FrameworkSection } from "@/components/home/framework-section";
 import { HiArrowUpRight } from "react-icons/hi2";
 
 export const metadata = createMetadata({
@@ -16,9 +17,9 @@ export const metadata = createMetadata({
 export default function AboutPage() {
   return (
     <main id="main-content" className="flex-1 bg-mm-black text-mm-cream">
-      <section className="relative overflow-hidden border-b border-mm-white/10 pt-32 lg:pt-40">
+      <section className="relative overflow-hidden border-b border-mm-white/10 pt-10 lg:pt-14">
         <div className="pointer-events-none absolute inset-0 opacity-50">
-          <div className="absolute -left-[18%] top-0 h-[480px] w-[480px] rounded-full bg-mm-royal/45 blur-[120px]" />
+          <div className="absolute -left-[18%] top-0 h-[480px] w-[480px] rounded-full bg-mm-royal/22 blur-[120px]" />
         </div>
         <Container className="relative pb-20 lg:pb-28">
           <SectionLabel>About Media Mantra</SectionLabel>
@@ -194,7 +195,9 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-gradient-to-br from-mm-royal/25 via-mm-black to-mm-black py-20 lg:py-28">
+      <FrameworkSection />
+
+      <section className="bg-gradient-to-br from-mm-royal/14 via-mm-black to-mm-black py-20 lg:py-28">
         <Container className="max-w-4xl">
           <p className="text-[10px] font-semibold uppercase tracking-[0.38em] text-mm-gold">Why it matters</p>
           <h2 className="mt-8 font-display text-3xl font-semibold md:text-4xl">Built for founders, boards, and category owners</h2>

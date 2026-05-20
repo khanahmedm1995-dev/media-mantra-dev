@@ -21,8 +21,7 @@ export const mainNav: readonly MainNavItem[] = [
   { kind: "link", label: "About", href: "/about" },
   { kind: "mega", label: "Services", href: "/services", children: serviceNavLinks },
   { kind: "link", label: "Case Studies", href: "/case-studies" },
-  { kind: "link", label: "Insights", href: "/blog" },
-  { kind: "link", label: "Careers", href: "/careers" },
+  { kind: "link", label: "Blogs", href: "/blog" },
   { kind: "link", label: "Contact", href: "/contact" },
 ] as const;
 
@@ -31,7 +30,7 @@ export const footerQuickLinks = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Insights", href: "/blog" },
+  { label: "Blogs", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -55,9 +54,9 @@ export const footerColumns = [
   {
     title: "Regional",
     links: [
-      { label: "India", href: "/india" },
-      { label: "UAE", href: "/uae" },
-      { label: "Singapore", href: "/singapore" },
+      { label: "India", href: "/in" },
+      { label: "UAE", href: "/ae" },
+      { label: "Singapore", href: "/sg" },
     ],
   },
   {

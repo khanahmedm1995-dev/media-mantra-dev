@@ -15,9 +15,9 @@ export default function BlogPage() {
   }, [cat]);
 
   return (
-    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-28 text-mm-cream lg:pt-36">
+    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-6 text-mm-cream lg:pt-8">
       <Container>
-        <SectionLabel>Insights</SectionLabel>
+        <SectionLabel>Blogs</SectionLabel>
         <h1 className="mt-8 max-w-4xl font-display text-[clamp(2.65rem,5vw,4.25rem)] font-semibold">Thinking Out Loud.</h1>
         <p className="mt-6 max-w-2xl font-editorial text-lg leading-[1.85] text-mm-light">
           We share what we know — because an informed client is a great client, and because we genuinely enjoy talking about

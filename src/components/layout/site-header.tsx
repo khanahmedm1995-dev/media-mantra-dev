@@ -9,9 +9,11 @@ import { HiArrowUpRight } from "react-icons/hi2";
 import { mainNav } from "@/data/navigation";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/button";
+import { useContactLead } from "@/components/contact/contact-lead-context";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { openContact } = useContactLead();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
@@ -48,7 +50,7 @@ export function SiteHeader() {
   const navLinkClass = (href: string) =>
     cn(
       "group relative text-[11px] font-semibold uppercase tracking-[0.26em] text-mm-light transition hover:text-mm-cream",
-      pathname === href && "text-mm-cream",
+      (href === "/blog" ? pathname.startsWith("/blog") : pathname === href) && "text-mm-cream",
     );
 
   const isServicesActive =
@@ -83,7 +85,8 @@ export function SiteHeader() {
                     <span
                       className={cn(
                         "absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-mm-gold transition group-hover:scale-x-100",
-                        pathname === item.href && "scale-x-100",
+                        (item.href === "/blog" ? pathname.startsWith("/blog") : pathname === item.href) &&
+                          "scale-x-100",
                       )}
                     />
                   </Link>
@@ -185,8 +188,8 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-4 lg:flex">
-            <Button asChild variant="outline" size="sm" className="border-mm-white/10">
-              <Link href="/contact">Get in touch</Link>
+            <Button variant="outline" size="sm" type="button" className="border-mm-white/10" onClick={openContact}>
+              Get in touch
             </Button>
           </div>
 

@@ -71,7 +71,7 @@ export const homeWork = {
 };
 
 export const homeInsights = {
-  label: "Insights",
+  label: "Blogs",
   headline: "Thinking Out Loud.",
   description:
     "Notes from our desks — sharper briefs start with sharper reading.",

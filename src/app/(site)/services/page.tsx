@@ -14,7 +14,7 @@ export const metadata = createMetadata({
 
 export default function ServicesPage() {
   return (
-    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-28 text-mm-cream lg:pb-32 lg:pt-36">
+    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-6 text-mm-cream lg:pb-32 lg:pt-8">
       <Container>
         <SectionLabel>Services</SectionLabel>
         <h1 className="mt-6 max-w-4xl font-display text-[clamp(2.75rem,5vw,4.5rem)] font-semibold leading-[1.02]">
