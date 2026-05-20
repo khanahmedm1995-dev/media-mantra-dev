@@ -9,6 +9,7 @@ import { HiArrowUpRight } from "react-icons/hi2";
 import { mainNav } from "@/data/navigation";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/button";
+import { MediaMantraLogo } from "@/components/brand/media-mantra-logo";
 import { useContactLead } from "@/components/contact/contact-lead-context";
 
 export function SiteHeader() {
@@ -67,13 +68,12 @@ export function SiteHeader() {
         )}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
-          <Link href="/" className="group flex items-center gap-3">
-            <span className="font-display text-sm font-semibold uppercase tracking-[0.35em] text-mm-cream transition group-hover:text-mm-gold">
-              Media Mantra
-            </span>
-            <span className="hidden text-[9px] uppercase tracking-[0.45em] text-mm-light sm:inline">
-              Global
-            </span>
+          <Link
+            href="/"
+            className="group flex items-start"
+            aria-label="Media Mantra Global — Home"
+          >
+            <MediaMantraLogo variant="onDark" density="compact" />
           </Link>
 
           <nav className="relative hidden items-center gap-8 lg:flex" aria-label="Primary">

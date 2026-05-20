@@ -10,16 +10,24 @@ import {
 import { footerServicesLine } from "@/data/home-content";
 import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
+import { MediaMantraLogo } from "@/components/brand/media-mantra-logo";
 
 export function SiteFooter() {
   return (
     <footer className="relative mt-16 border-t border-mm-white/[0.06] bg-mm-midnight/40">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mm-gold/50 to-transparent" />
       <Container className="py-10 lg:py-14">
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-mm-white/[0.06] pb-8">
-          <p className="font-display text-[11px] font-semibold uppercase tracking-[0.32em] text-mm-cream">{siteConfig.name}</p>
-          <span className="hidden h-3 w-px bg-mm-white/15 sm:block" aria-hidden />
-          <p className="text-sm text-mm-light">{offices.map((o) => o.region).join(" · ")}</p>
+        <div className="flex flex-col gap-8 border-b border-mm-white/[0.06] pb-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-x-10">
+          <Link href="/" className="group inline-flex max-w-fit" aria-label="Media Mantra Global — Home">
+            <MediaMantraLogo variant="onDark" density="full" />
+          </Link>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <span className="hidden h-10 w-px bg-mm-white/15 sm:block" aria-hidden />
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-mm-gold">Offices</p>
+              <p className="mt-2 text-sm text-mm-light">{offices.map((o) => o.region).join(" · ")}</p>
+            </div>
+          </div>
         </div>
 
         <nav className="mt-8 flex flex-wrap gap-x-8 gap-y-3" aria-label="Footer quick links">
