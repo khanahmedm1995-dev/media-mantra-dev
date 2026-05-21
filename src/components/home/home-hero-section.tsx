@@ -3,21 +3,27 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { HiArrowDown, HiSparkles } from "react-icons/hi2";
+import { HiArrowDown } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
 import { MagneticWrap } from "@/components/motion/magnetic-wrap";
-import { homeHero, homeHeroAside, homeHeroStory } from "@/data/home-content";
+import { homeHero, homeHopscotchHero } from "@/data/home-content";
 import { useContactLead } from "@/components/contact/contact-lead-context";
+import { Container } from "@/components/ui/container";
 
 const HERO_VIDEO =
   "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_24fps.mp4";
 
+/** Full-bleed video hero patterned after editorial comms benchmarks (Hopscotch-style pacing). */
 export function HomeHeroSection() {
   const { openContact } = useContactLead();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const yMain = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
   const opacityHero = useTransform(scrollYProgress, [0, 0.88], [1, 0]);
+
+  const jump = (id: string) =>
+    typeof document !== "undefined" &&
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section
@@ -27,7 +33,7 @@ export function HomeHeroSection() {
       aria-label="Homepage hero"
     >
       <video
-        className="absolute inset-0 h-full w-full object-cover opacity-[0.42]"
+        className="absolute inset-0 h-full w-full object-cover opacity-[0.48]"
         src={HERO_VIDEO}
         autoPlay
         muted
@@ -35,116 +41,95 @@ export function HomeHeroSection() {
         playsInline
         poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=70"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-mm-black/92 via-mm-royal/45 to-mm-black mm-mesh" />
-      <div className="pointer-events-none absolute -left-[22%] top-[-14%] h-[62vh] w-[62vh] rounded-full bg-mm-gold/18 blur-[130px] mm-glow-orb" />
-      <div className="pointer-events-none absolute -right-[12%] bottom-[-30%] h-[68vh] w-[68vh] rounded-full bg-mm-royal/40 blur-[140px]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-mm-charcoal/88 via-mm-royal/16 to-mm-charcoal mm-mesh" />
+      <div className="pointer-events-none absolute -left-[20%] top-[-18%] h-[56vh] w-[56vh] rounded-full bg-mm-gold/14 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-[14%] bottom-[-36%] h-[62vh] w-[62vh] rounded-full bg-mm-royal/14 blur-[130px]" />
 
       <motion.div style={{ opacity: opacityHero }} className="relative z-10 flex min-h-[100svh] flex-col">
-        <div className="flex flex-1 flex-col justify-center px-5 pb-20 pt-[7.25rem] sm:px-8 lg:px-12 xl:pb-28">
-          <div className="mx-auto flex w-full max-w-[940px] flex-col xl:max-w-[1100px]">
-            <motion.div style={{ y: yText }} className="space-y-9 xl:space-y-11">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
+        <div className="flex flex-1 flex-col justify-end pb-16 pt-[6.75rem] sm:px-0 lg:justify-center lg:pb-28 lg:pt-[5.5rem]">
+          <Container className="max-w-[1200px]">
+            <motion.div style={{ y: yMain }} className="max-w-[46rem]">
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-light md:text-[11px]"
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[10px] font-semibold uppercase tracking-[0.48em] text-mm-gold"
               >
-                <span className="inline-flex items-center gap-3 rounded-full border border-mm-white/[0.07] bg-mm-white/[0.03] px-4 py-2 backdrop-blur-xl">
-                  <HiSparkles className="text-mm-gold" aria-hidden />
-                  {homeHero.chip}
-                </span>
-                <span className="hidden text-mm-white/35 sm:inline" aria-hidden>
-                  ·
-                </span>
-                <span className="font-medium uppercase tracking-[0.28em] text-mm-cream/88">{homeHero.badge}</span>
-              </motion.div>
+                {homeHopscotchHero.eyebrow}
+              </motion.p>
 
-              <h1 className="font-display text-[clamp(2.65rem,7.75vw,5.95rem)] font-semibold leading-[0.9] tracking-[-0.03em] text-mm-cream">
-                <span className="block overflow-hidden">
-                  <motion.span
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.04 }}
-                    className="block"
-                  >
-                    {homeHero.lines[0]}
-                  </motion.span>
-                </span>
-                <span className="mt-2 block overflow-hidden md:mt-3">
-                  <motion.span
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.14 }}
-                    className="block text-mm-light/92"
-                  >
-                    {homeHero.lines[1]}
-                  </motion.span>
-                </span>
-                <span className="relative mt-2 block overflow-hidden md:mt-3">
-                  <motion.span
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.24 }}
-                    className="block bg-gradient-to-r from-mm-gold via-mm-cream to-mm-gold/80 bg-clip-text text-transparent"
-                  >
-                    {homeHero.lines[2]}
-                  </motion.span>
-                </span>
-              </h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.06, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-7 font-display text-[clamp(2rem,6.25vw,4.42rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-mm-cream"
+              >
+                {homeHopscotchHero.lineA}
+              </motion.h1>
 
               <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.42, duration: 0.75 }}
-                className="max-w-2xl font-editorial text-lg leading-[1.7] text-mm-cream/[0.92] md:text-xl md:leading-snug"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.55 }}
+                className="mt-8 max-w-2xl font-editorial text-lg leading-[1.7] text-mm-cream/[0.9] md:text-xl"
               >
                 {homeHero.subhead}
               </motion.p>
 
-              <div className="grid gap-5 border-y border-mm-white/10 py-8 sm:grid-cols-2 sm:gap-10 sm:py-10">
-                {homeHeroAside.map((line) => (
-                  <p key={line} className="text-[13px] font-semibold uppercase tracking-[0.22em] text-mm-light/82">
-                    {line}
-                  </p>
-                ))}
-              </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.32, duration: 0.5 }}
+                className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-mm-cream"
+              >
+                <span className="font-display text-[11px] font-semibold uppercase tracking-[0.28em] text-mm-gold/95">
+                  {homeHopscotchHero.lineB}
+                </span>
+                <button
+                  type="button"
+                  className="text-[10px] font-semibold uppercase tracking-[0.32em] text-mm-cream/90 underline decoration-mm-gold/60 underline-offset-8 transition hover:text-mm-gold"
+                  onClick={() => jump("expertise")}
+                >
+                  {homeHopscotchHero.discover}
+                </button>
+              </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 22 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.52, duration: 0.75 }}
-                className="flex flex-wrap items-center gap-5"
+                transition={{ delay: 0.42, duration: 0.6 }}
+                className="mt-12 flex flex-wrap items-center gap-4 lg:gap-5"
               >
                 <MagneticWrap>
-                  <Button type="button" size="lg" className="px-10" onClick={openContact}>
-                    Book a strategy call
+                  <Button type="button" size="lg" className="px-9" onClick={openContact}>
+                    Start a conversation
                   </Button>
                 </MagneticWrap>
                 <MagneticWrap strength={0.12}>
-                  <Button asChild variant="outline" size="lg" className="px-10">
-                    <Link href="/services">Explore services</Link>
+                  <Button asChild variant="outline" size="lg" className="border-mm-white/[0.12] px-9">
+                    <Link href="/case-studies">View work</Link>
                   </Button>
                 </MagneticWrap>
-                <MagneticWrap strength={0.1}>
-                  <Button asChild variant="ghost" size="lg" className="text-mm-light hover:bg-transparent hover:text-mm-gold">
-                    <Link href="/case-studies">See our work →</Link>
+                <MagneticWrap strength={0.08}>
+                  <Button asChild variant="ghost" size="lg" className="text-mm-light hover:text-mm-gold">
+                    <Link href="/services">Expertise overview</Link>
                   </Button>
                 </MagneticWrap>
               </motion.div>
             </motion.div>
-          </div>
+          </Container>
         </div>
 
         <motion.button
           type="button"
-          aria-label="Scroll to content"
+          aria-label="Scroll to trades and sectors"
           className="absolute bottom-28 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-mm-light transition hover:text-mm-gold md:flex"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 8, 0] }}
-          transition={{ delay: 1, duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          onClick={() => document.getElementById("clients")?.scrollIntoView({ behavior: "smooth" })}
+          transition={{ delay: 0.85, duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          onClick={() => jump("expertise")}
         >
-          <span className="text-[9px] uppercase tracking-[0.5em]">Scroll</span>
+          <span className="text-[9px] uppercase tracking-[0.48em]">Scroll</span>
           <HiArrowDown className="h-5 w-5" />
         </motion.button>
       </motion.div>

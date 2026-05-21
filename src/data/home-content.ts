@@ -13,6 +13,47 @@ export const homeHeroStory = [
 
 export const homeHeroAside = ["India · UAE · Singapore · One integrated network.", "13 years shaping narratives that compound."];
 
+export const homeHopscotchHero = {
+  eyebrow: "Integrated communications",
+  lineA: "Independent global communications group.",
+  lineB: "Digital · PR · Influence · Strategy",
+  discover: "Discover",
+} as const;
+
+export const homeExpertiseHub = {
+  label: "Our trades & sectors",
+  headline:
+    "360° communications expertise calibrated for boards, scrutiny, and market velocity.",
+  intro:
+    "Media Mantra Global combines editorial instinct with digital orchestration across India, the UAE, and Singapore — the same uncompromising standard in every market relationship.",
+  follow:
+    "From transformation mandates to launches, reputational arcs, visibility, retention, engagement, or category ownership — integrated is how we've always operated, long before we used the word everywhere else.",
+  cta: { label: "Our expertise", href: "/services" as const },
+} as const;
+
+export const homeNetworkBand = {
+  label: "Our integrated network",
+  headline: "One command layer. Three commanding markets.",
+} as const;
+
+export const homePeopleBand = {
+  label: "People",
+  headline: "Bold, founder-led practitioners — built for prestige and pace.",
+  cta: { label: "Join our talents", href: "/careers" as const },
+  image:
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80",
+} as const;
+
+export const homeInsightsRibbon = {
+  label: "Our last news",
+  cta: { label: "All insights", href: "/blog" as const },
+} as const;
+
+export const homeContactStrip = {
+  label: "Contact us",
+  line: "Start a mandate — Delhi, Dubai, or Singapore desks.",
+} as const;
+
 export const homeClientsLead = {
   title: "Our Clients",
   description: "Fortune‑grade portfolios and challenger brands — influence calibrated for boards and culture.",

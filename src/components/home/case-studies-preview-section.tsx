@@ -12,15 +12,124 @@ import { HiArrowUpRight } from "react-icons/hi2";
 
 type Props = {
   featuredCount?: number;
+  layout?: "classic" | "hopscotch";
 };
 
-export function CaseStudiesPreviewSection({ featuredCount = 3 }: Props) {
-  const n = Math.min(Math.max(featuredCount, 1), caseStudies.length);
+export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic" }: Props) {
+  const count = layout === "hopscotch" ? Math.max(featuredCount, 3) : featuredCount;
+  const n = Math.min(Math.max(count, 1), caseStudies.length);
   const featured = caseStudies.slice(0, n);
   const many = n >= 3;
   const gridClass = many
     ? "grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3"
     : "grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2";
+
+  if (layout === "hopscotch") {
+    const [lead, ...rest] = featured;
+    if (!lead) return null;
+
+    return (
+      <section id="work" className="scroll-mt-28 bg-mm-cream py-16 text-mm-graphite lg:scroll-mt-32 lg:py-24">
+        <Container>
+          <div className="flex flex-col gap-6 pb-12 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.48em] text-mm-gold">Our latest work</p>
+              <h2 className="mt-6 font-display text-[clamp(2rem,4.2vw,3.15rem)] font-semibold leading-[1.05] tracking-tight text-mm-royal">
+                {homeWork.headline}
+              </h2>
+              <p className="mt-5 max-w-2xl font-editorial text-base leading-relaxed text-mm-graphite/78 md:text-lg">
+                {homeWork.description}
+              </p>
+            </div>
+            <Link
+              href="/case-studies"
+              className="group inline-flex shrink-0 items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.34em] text-mm-royal underline-offset-[10px] transition hover:text-mm-graphite"
+            >
+              See more cases
+              <HiArrowUpRight className="h-4 w-4 transition group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Link
+              href={`/case-studies/${lead.slug}`}
+              className="group relative mt-6 block overflow-hidden rounded-[2.25rem]"
+            >
+              <div className="relative aspect-[3/4] min-h-[min(72vh,520px)] w-full md:aspect-[21/11] md:min-h-[min(62vh,480px)]">
+                <div className={`absolute inset-0 z-[1] bg-gradient-to-tr ${lead.accent} opacity-[0.52] mix-blend-multiply`} />
+                <Image
+                  src={lead.heroImage}
+                  alt={lead.brand}
+                  fill
+                  priority
+                  className="object-cover transition duration-[1.05s] ease-out group-hover:scale-[1.03]"
+                  sizes="(max-width:768px) 100vw, min(1320px, 96vw)"
+                />
+                <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-mm-graphite via-mm-graphite/45 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 z-[3] px-8 py-12 sm:px-12 sm:pb-14">
+                  <Badge className="border-mm-white/35 bg-mm-black/35 px-2.5 py-0 text-[9px] uppercase tracking-[0.2em] text-mm-cream backdrop-blur-sm">
+                    {lead.category}
+                  </Badge>
+                  <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.28em] text-mm-gold/95">{lead.brand}</p>
+                  <h3 className="mt-4 max-w-3xl font-display text-[clamp(1.85rem,4.5vw,3.05rem)] font-semibold leading-[1.05] text-mm-cream">
+                    {lead.title}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
+          {rest.length > 0 ? (
+            <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+              {rest.map((item, index) => (
+                <motion.article
+                  key={item.slug}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-24px" }}
+                  transition={{ delay: index * 0.06, duration: 0.5 }}
+                  className="group/card flex min-h-[280px] flex-col overflow-hidden rounded-2xl border border-mm-graphite/[0.08] bg-mm-white shadow-[0_16px_50px_-30px_rgba(25,25,112,0.35)] transition hover:border-mm-royal/22"
+                >
+                  <Link
+                    href={`/case-studies/${item.slug}`}
+                    className="relative aspect-[16/10] w-full shrink-0 overflow-hidden"
+                  >
+                    <div className={`absolute inset-0 z-[1] bg-gradient-to-tr ${item.accent} opacity-50 mix-blend-multiply`} />
+                    <Image
+                      src={item.heroImage}
+                      alt={item.brand}
+                      fill
+                      className="object-cover transition duration-500 ease-out group-hover/card:scale-[1.04]"
+                      sizes="(max-width:768px) 100vw, 50vw"
+                    />
+                  </Link>
+                  <div className="flex flex-1 flex-col px-6 py-6">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-mm-royal/75">{item.brand}</p>
+                    <h3 className="mt-4 font-display text-xl font-semibold leading-snug text-mm-graphite">
+                      <Link href={`/case-studies/${item.slug}`} className="transition hover:text-mm-royal">
+                        {item.title}
+                      </Link>
+                    </h3>
+                    <Link
+                      href={`/case-studies/${item.slug}`}
+                      className="mt-auto pt-8 inline-flex w-fit items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-royal"
+                    >
+                      See more <HiArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          ) : null}
+        </Container>
+      </section>
+    );
+  }
 
   return (
     <section id="work" className="scroll-mt-28 bg-mm-cream py-12 text-mm-graphite sm:py-14 lg:scroll-mt-32 lg:py-16">
