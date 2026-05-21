@@ -27,11 +27,15 @@ export function ClientsMarqueeSection() {
       <Container className="relative z-[1] mb-12 lg:mb-14">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-14">
           <div className="max-w-xl">
-            <div className="flex items-center gap-3">
-              <span className="h-px w-12 bg-gradient-to-r from-mm-gold to-mm-gold/30" aria-hidden />
-              <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-gold">{eyebrow}</p>
-            </div>
-            <h2 className="mt-6 font-display text-[clamp(2rem,4.2vw,2.85rem)] font-semibold uppercase leading-[1.05] tracking-[0.02em] text-mm-graphite">
+            {eyebrow.trim() ? (
+              <div className="flex items-center gap-3">
+                <span className="h-px w-12 bg-gradient-to-r from-mm-gold to-mm-gold/30" aria-hidden />
+                <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-gold">{eyebrow}</p>
+              </div>
+            ) : null}
+            <h2
+              className={`font-display text-[clamp(2rem,4.2vw,2.85rem)] font-semibold uppercase leading-[1.05] tracking-[0.02em] text-mm-graphite ${eyebrow.trim() ? "mt-6" : ""}`}
+            >
               {title}
             </h2>
           </div>

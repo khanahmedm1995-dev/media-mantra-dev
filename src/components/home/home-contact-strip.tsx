@@ -9,7 +9,11 @@ export function HomeContactStrip() {
   const { openContact } = useContactLead();
 
   return (
-    <section aria-label={homeContactStrip.headline} className="bg-mm-cream px-6 py-12 sm:py-16">
+    <section
+      id="contact"
+      className="scroll-mt-28 bg-mm-cream px-6 py-12 sm:py-16 lg:scroll-mt-32"
+      aria-label={homeContactStrip.headline}
+    >
       <div className="mx-auto flex max-w-[920px] flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
         <div className="max-w-xl">
           <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-gold">{homeContactStrip.label}</p>

@@ -83,12 +83,14 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
           <div className="flex flex-col gap-10 pb-16 sm:flex-row sm:items-end sm:justify-between lg:gap-12">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.48em] text-mm-gold">{homeWork.sectionLabel}</p>
-              <h2 className="mt-6 font-display text-[clamp(2rem,4.5vw,3.35rem)] font-semibold uppercase leading-[1.05] tracking-tight">
+              <h2 className="mt-6 font-display text-[clamp(2rem,4.5vw,3.35rem)] font-semibold leading-[1.05] tracking-tight text-mm-graphite">
                 {homeWork.headline}
               </h2>
-              <p className="mt-6 max-w-2xl font-editorial text-base leading-relaxed text-mm-graphite/72 md:text-lg">
-                {homeWork.description}
-              </p>
+              {homeWork.description.trim() ? (
+                <p className="mt-6 max-w-2xl font-editorial text-base leading-relaxed text-mm-graphite/72 md:text-lg">
+                  {homeWork.description}
+                </p>
+              ) : null}
             </div>
             <Link
               href="/case-studies"
@@ -126,7 +128,11 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
             <h2 className="mt-2 font-display text-2xl font-semibold leading-[1.08] tracking-tight sm:text-[clamp(1.65rem,3.2vw,2.35rem)]">
               {homeWork.headline}
             </h2>
-            <p className="mt-2 max-w-xl font-editorial text-sm leading-snug text-mm-graphite/75 sm:mt-2.5 sm:text-[0.9375rem]">{homeWork.description}</p>
+            {homeWork.description.trim() ? (
+              <p className="mt-2 max-w-xl font-editorial text-sm leading-snug text-mm-graphite/75 sm:mt-2.5 sm:text-[0.9375rem]">
+                {homeWork.description}
+              </p>
+            ) : null}
           </div>
           <Link
             href="/case-studies"

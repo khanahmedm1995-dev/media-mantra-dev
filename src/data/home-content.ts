@@ -25,29 +25,29 @@ export const homeIntro = {
 export const homeLocations = {
   label: "Locations",
   paragraph:
-    "India. UAE. Singapore. Three of the world's most distinct markets, and we don't just operate in them, we live in them. Our integrated international network brings a global vision to every brief with a local understanding of every market, the same uncompromising standard of quality in every relationship, here and everywhere else we work.",
+    "India · UAE · Singapore — one network, local fluency, one standard of craft.",
 } as const;
 
-/** Hero — second word gets blue highlight (`HomeHeroSection`). Leave empty to hide banner headline. */
+/** Hero — video only on homepage: leave strings empty (no overlay copy over the film). */
 export const homeHopscotchHero = {
   headline: "",
   subline: "",
   tradeLinks: [] as readonly { label: string; href: string }[],
-  discoverLabel: "Explore",
+  discoverLabel: "",
   discoverHref: "#intro-split" as const,
 } as const;
 
-/** Section 2 — intro (distinct from hero: cream band + image; short copy; full story on /about) */
+/** Section 2 — homepage intro: minimal copy; full story on /about */
 export const homeHopIntroSplit = {
   sectionLabel: "Intro",
   headline: "Beyond communications.\nWe are global influence.",
   paragraphs: [
-    "Independent, integrated communications across India, the UAE & Singapore — sharpened by AI, led by creativity, anchored in strategy.",
-  ],
+    "Independent integrated communications across India, the UAE & Singapore — powered by AI, creativity, and strategy. The full story is on About.",
+  ] as const,
   imageSrc:
     "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=82",
   imageAlt: "Team collaborating on communications strategy",
-  cta: { label: "About Media Mantra", href: "/about" as const },
+  cta: { label: "About", href: "/about" as const },
 } as const;
 
 export const homeCsrBand = {
@@ -69,6 +69,22 @@ export const homeExpertiseHub = {
   cta: { label: "Our expertise", href: "/services" as const },
 } as const;
 
+/** Right column — sector grid (Hopscotch-style arrows) in the expertise slider band */
+export const homeExpertiseSplitSectors = [
+  { label: "Technology & platforms", href: "/industries" as const },
+  { label: "Financial services", href: "/industries" as const },
+  { label: "Consumer & retail", href: "/industries" as const },
+  { label: "Health & pharma", href: "/industries" as const },
+  { label: "Hospitality & F&B", href: "/industries" as const },
+  { label: "Energy & industrials", href: "/industries" as const },
+  { label: "Real estate", href: "/industries" as const },
+  { label: "Luxury & lifestyle", href: "/industries" as const },
+  { label: "Media & entertainment", href: "/industries" as const },
+  { label: "Institutional", href: "/industries" as const },
+  { label: "Mobility", href: "/industries" as const },
+  { label: "Public sector", href: "/industries" as const },
+] as const;
+
 export const homeNetworkBand = {
   label: "Network",
   headline: "One command layer. Three commanding markets.",
@@ -87,58 +103,29 @@ export const homePeopleBand = {
 } as const;
 
 export const homeInsightsRibbon = {
-  label: "Blogs",
-  cta: { label: "View all", href: "/blog" as const },
+  label: "Our last news",
+  cta: { label: "All blogs", href: "/blog" as const },
 } as const;
-
-export type HomeHopNewsCard = {
-  href: string;
-  title: string;
-  dek: string;
-  category: string;
-  date: string;
-  coverImage: string;
-  brandTag: string;
-  ctaLabel: string;
-};
-
-export const homeHopNewsPreview: readonly HomeHopNewsCard[] = [
-  {
-    href: "/blog",
-    title: "Latest perspective",
-    dek: "Notes from our desks — sharper briefs start with sharper reading.",
-    category: "Strategy",
-    date: "2026-05-01",
-    coverImage:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=70",
-    brandTag: "Media Mantra Global",
-    ctaLabel: "Read insight",
-  },
-] as const;
 
 export const homeContactStrip = {
   label: "Contact",
-  headline: "Let's Build Influence Together",
-  lines: [
-    "Your brand deserves to be known. Loudly. In the right rooms. Across the right markets.",
-    "Let's figure out what that looks like, together.",
-  ],
+  headline: "Let's build influence together",
+  lines: ["India · UAE · Singapore — tell us what you're building next."] as const,
   primaryCta: "Get in Touch",
 } as const;
 
 /** Section 4 — clients marquee lead-in */
 export const homeClientsLead = {
-  eyebrow: "Trusted globally",
+  eyebrow: "",
   title: "Our Clients",
-  description:
-    "From Fortune 500 leaders to disruptive challengers, we help brands command influence where it matters most.",
+  description: "From Fortune 500s to challengers — influence where it counts.",
 } as const;
 
 /** Section 5 — proven metrics */
 export const homeProven = {
   label: "Proven results across markets",
   headline: "Proven Results Across Markets",
-  intro: "Numbers built across India, UAE & Singapore.",
+  intro: "",
   stats: [
     {
       key: "placements",
@@ -183,10 +170,10 @@ export const homeFrameworkIntro = {
 
 /** Section 6 — work preview */
 export const homeWork = {
-  sectionLabel: "Our Work",
+  sectionLabel: "Our work",
   label: "Case Studies",
-  headline: "We Let the Work Talk.",
-  description: "Ideas truly worth their weight in gold across India, UAE, and Singapore",
+  headline: "We let the work talk",
+  description: "",
 } as const;
 
 export const homeInsights = {
@@ -208,8 +195,16 @@ export const footerSeoParagraph =
   "Media Mantra Global is a leading global PR & integrated communications firm with presence in India, UAE, and Singapore. We work with high-growth brands, ambitious founders, and category-defining companies to build media visibility, digital authority, and the kind of influence that actually changes markets. If you're looking for the best PR agency in India, a trusted PR agency UAE, or PR Services in Singapore , you just found it.";
 
 export const footerServicesLine =
-  "Strategic PR & Media Relations · Founder & Leadership Branding · Digital PR & SEO Authority · Global Market Entry PR · Reputation & Crisis Management · Influencer Marketing · SEO & Performance Marketing";
+  "Strategic PR & Media Relations | Founder & Leadership Branding | Digital PR & SEO Authority | Global Market Entry PR | Reputation & Crisis Management | Influencer Marketing | SEO & Performance Marketing";
 
 export const homeHopFooterLead = {
-  discoverLabel: "View selected work",
+  discoverLabel: "Discover our work",
+} as const;
+
+/** Homepage black footer — section 8 (also uses `footerSeoParagraph`, `footerServicesLine`) */
+export const homePageFooter = {
+  officesHeading: "Offices",
+  officesLine: "India | UAE | Singapore",
+  servicesHeading: "Services",
+  tagline: "Media Mantra Global",
 } as const;

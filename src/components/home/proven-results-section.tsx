@@ -65,7 +65,7 @@ export function ProvenResultsSection({ dense = false }: ProvenResultsSectionProp
   return (
     <section
       ref={root}
-      id="metrics"
+      id="proven"
       className="relative scroll-mt-28 overflow-hidden bg-mm-graphite py-24 lg:scroll-mt-32 lg:py-36"
     >
       <div className="pointer-events-none absolute inset-0 opacity-50">
@@ -77,10 +77,16 @@ export function ProvenResultsSection({ dense = false }: ProvenResultsSectionProp
           <h2 className="font-display text-[clamp(2rem,4.2vw,3.35rem)] font-semibold leading-[1.05] tracking-tight text-mm-cream">
             {homeProven.headline}
           </h2>
-          <p className="max-w-xl font-editorial text-base leading-relaxed text-mm-light md:text-lg">{homeProven.intro}</p>
+          {homeProven.intro.trim() ? (
+            <p className="max-w-xl font-editorial text-base leading-relaxed text-mm-light md:text-lg">{homeProven.intro}</p>
+          ) : null}
         </div>
 
-        <div className="mt-20 grid gap-14 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4 lg:gap-0 lg:gap-y-0">
+        <div
+          className={`grid gap-14 sm:grid-cols-2 sm:gap-16 lg:grid-cols-4 lg:gap-0 lg:gap-y-0 ${
+            homeProven.intro.trim() ? "mt-20 lg:mt-24" : "mt-12 lg:mt-16"
+          }`}
+        >
           {stats.map((s, i) => (
             <div
               key={s.key}

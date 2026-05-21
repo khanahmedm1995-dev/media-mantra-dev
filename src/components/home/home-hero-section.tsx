@@ -10,16 +10,7 @@ import { Container } from "@/components/ui/container";
 
 const HERO_VIDEO = "/videos/home-hero.mp4";
 
-const heroNav = [
-  { label: "About", href: "/about" },
-  { label: "Intro", href: "#intro-split" },
-  { label: "Locations", href: "#locations" },
-] as const;
-
-/**
- * Hopscotch-style hero — engineering grid, oversized caps headline + blue highlight,
- * upper utility nav, faint film (layout reference hopscotch.one).
- */
+/** Video banner — full-bleed film + grid; main site nav lives in `SiteHeader`. */
 export function HomeHeroSection() {
   const { openContact } = useContactLead();
   const ref = useRef<HTMLElement>(null);
@@ -35,6 +26,9 @@ export function HomeHeroSection() {
   const hasVisibleSubline = subline.trim().length > 0;
   const highlightAt = hasVisibleHeadline ? Math.min(1, Math.max(0, words.length - 1)) : 0;
   const hasVisibleTradeLinks = tradeLinks.length > 0;
+  const hasDiscover = discoverLabel.trim().length > 0;
+  const showMarketingBlock =
+    hasVisibleHeadline || hasVisibleSubline || hasVisibleTradeLinks || hasDiscover;
 
   return (
     <section
@@ -53,94 +47,100 @@ export function HomeHeroSection() {
           playsInline
           preload="auto"
         />
-        {/* Light tint so headline stays readable without hiding the film */}
-        <div className="absolute inset-0 bg-gradient-to-b from-mm-graphite/30 via-mm-graphite/40 to-mm-graphite/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-mm-graphite/15 via-mm-graphite/22 to-mm-graphite/35" />
       </div>
 
       <motion.div
         style={{ opacity: opacityHero }}
-        className="relative z-10 flex min-h-[100svh] flex-col pt-[5.5rem] lg:pt-[4.75rem]"
+        className="relative z-10 flex min-h-[100svh] flex-col pt-[4.75rem] lg:pt-[4rem]"
       >
-        <Container className="max-w-[1400px]">
-          <nav
-            className="flex flex-wrap gap-x-7 gap-y-3 border-b border-mm-cream/[0.07] pb-8 text-[10px] font-semibold uppercase tracking-[0.34em] text-mm-cream/72"
-            aria-label="Section shortcuts"
-          >
-            {heroNav.map((item) => (
-              <Link key={item.href + item.label} href={item.href} className="transition hover:text-mm-cream">
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </Container>
+        {showMarketingBlock ? (
+          <div className="flex flex-1 flex-col justify-end px-5 pb-20 pt-10 sm:px-8 lg:pb-28">
+            <Container className="max-w-[1100px]">
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center lg:text-left"
+              >
+                <h1 className="font-display text-[clamp(1.65rem,6.5vw,4rem)] font-semibold uppercase leading-[0.98] tracking-tight text-mm-cream">
+                  {!hasVisibleHeadline ? (
+                    <span className="sr-only">Media Mantra Global</span>
+                  ) : (
+                    <>
+                      <span className="sr-only">Media Mantra Global — </span>
+                      {words.map((w, i) =>
+                        i === highlightAt ? (
+                          <span
+                            key={i}
+                            className="mx-1 inline-block bg-[#0d47cc] px-2 py-1 align-middle text-mm-cream sm:px-3 sm:py-1.5"
+                          >
+                            {w}
+                          </span>
+                        ) : (
+                          <span key={i}>{w} </span>
+                        ),
+                      )}
+                    </>
+                  )}
+                </h1>
 
-        <div className="flex flex-1 flex-col justify-end px-5 pb-20 pt-10 sm:px-8 lg:pb-28">
-          <Container className="max-w-[1100px]">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="text-center lg:text-left"
-            >
-              <h1 className="font-display text-[clamp(1.65rem,6.5vw,4rem)] font-semibold uppercase leading-[0.98] tracking-tight text-mm-cream">
-                {!hasVisibleHeadline ? (
-                  <span className="sr-only">Media Mantra Global</span>
-                ) : (
-                  <>
-                    <span className="sr-only">Media Mantra Global — </span>
-                    {words.map((w, i) =>
-                      i === highlightAt ? (
-                        <span
-                          key={i}
-                          className="mx-1 inline-block bg-[#0d47cc] px-2 py-1 align-middle text-mm-cream sm:px-3 sm:py-1.5"
-                        >
-                          {w}
-                        </span>
-                      ) : (
-                        <span key={i}>{w} </span>
-                      ),
-                    )}
-                  </>
-                )}
-              </h1>
+                {hasVisibleSubline ? (
+                  <p
+                    className={`font-editorial text-[0.9375rem] uppercase tracking-[0.28em] text-mm-cream/55 ${hasVisibleHeadline ? "mt-6" : "mt-0"}`}
+                  >
+                    {subline}
+                  </p>
+                ) : null}
 
-              {hasVisibleSubline ? (
-                <p
-                  className={`font-editorial text-[0.9375rem] uppercase tracking-[0.28em] text-mm-cream/55 ${hasVisibleHeadline ? "mt-6" : "mt-0"}`}
-                >
-                  {subline}
-                </p>
-              ) : null}
+                {hasVisibleTradeLinks ? (
+                  <nav
+                    className={`mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-2 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.26em] text-mm-cream/82 lg:mx-0 lg:justify-start`}
+                    aria-label="Practice areas"
+                  >
+                    {tradeLinks.map((t, i) => (
+                      <span key={t.href} className="inline-flex flex-wrap items-center gap-x-2">
+                        {i > 0 ? (
+                          <span className="text-mm-cream/35" aria-hidden>
+                            —
+                          </span>
+                        ) : null}
+                        <Link href={t.href} className="border-b border-mm-cream/25 transition hover:border-mm-gold hover:text-mm-gold">
+                          {t.label}
+                        </Link>
+                      </span>
+                    ))}
+                  </nav>
+                ) : null}
 
-              {hasVisibleTradeLinks ? (
-                <p
-                  className={`mx-auto max-w-2xl font-editorial text-[0.8125rem] font-semibold uppercase tracking-[0.24em] text-mm-cream/78 lg:mx-0 ${hasVisibleSubline || hasVisibleHeadline ? "mt-10" : "mt-0"}`}
-                >
-                  {tradeLinks.map((t) => t.label).join(" — ")}
-                </p>
-              ) : null}
-
-              <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-mm-cream/88 lg:mx-0 lg:justify-start">
-                <Link
-                  href={discoverHref}
-                  className="border-b border-mm-gold pb-0.5 text-mm-gold transition hover:text-mm-cream"
-                >
-                  {discoverLabel}
-                </Link>
-                <span className="text-mm-cream/35" aria-hidden>
-                  ·
-                </span>
-                <button
-                  type="button"
-                  onClick={openContact}
-                  className="border-b border-transparent pb-0.5 transition hover:border-mm-cream"
-                >
-                  Contact
-                </button>
-              </div>
-            </motion.div>
-          </Container>
-        </div>
+                {hasDiscover ? (
+                  <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-mm-cream/88 lg:mx-0 lg:justify-start">
+                    <Link
+                      href={discoverHref}
+                      className="border-b border-mm-gold pb-0.5 text-mm-gold transition hover:text-mm-cream"
+                    >
+                      {discoverLabel}
+                    </Link>
+                    <span className="text-mm-cream/35" aria-hidden>
+                      ·
+                    </span>
+                    <button
+                      type="button"
+                      onClick={openContact}
+                      className="border-b border-transparent pb-0.5 transition hover:border-mm-cream"
+                    >
+                      Contact
+                    </button>
+                  </div>
+                ) : null}
+              </motion.div>
+            </Container>
+          </div>
+        ) : (
+          <div className="flex flex-1 flex-col">
+            <h1 className="sr-only">Media Mantra Global — integrated communications across India, UAE, and Singapore</h1>
+          </div>
+        )}
 
         <motion.button
           type="button"
@@ -149,7 +149,7 @@ export function HomeHeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 5, 0] }}
           transition={{ delay: 0.85, duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          onClick={() => jump("intro-split")}
+          onClick={() => jump("expertise")}
         >
           <span className="text-[9px] uppercase tracking-[0.48em]">Scroll</span>
           <HiArrowDown className="h-5 w-5" />

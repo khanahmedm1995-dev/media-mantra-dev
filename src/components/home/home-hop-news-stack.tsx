@@ -3,12 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HiArrowUpRight } from "react-icons/hi2";
-import { homeHopNewsPreview, homeInsightsRibbon } from "@/data/home-content";
+import { blogPosts } from "@/data/blog";
+import { homeInsightsRibbon } from "@/data/home-content";
 import { Container } from "@/components/ui/container";
 
-/** Hopscotch news stack — bordered horizontal cards */
+const MAX = 3;
+
+/** Hopscotch news stack — bordered horizontal cards (text spine + image rail) */
 export function HomeHopNewsStack() {
-  const posts = homeHopNewsPreview;
+  const posts = blogPosts.slice(0, MAX);
 
   return (
     <section id="news" className="scroll-mt-28 bg-mm-white pb-24 pt-12 lg:scroll-mt-32 lg:pb-32 lg:pt-16">
@@ -26,29 +29,29 @@ export function HomeHopNewsStack() {
       </Container>
 
       <Container className="flex flex-col gap-10 lg:max-w-[1100px] lg:px-4">
-        {posts.map((p, idx) => (
+        {posts.map((p) => (
           <article
-            key={`${p.href}-${idx}`}
+            key={p.slug}
             className="flex flex-col overflow-hidden border border-mm-graphite bg-[#f6f6f4] sm:flex-row"
           >
-            <Link href={p.href} className="group flex flex-1 flex-col p-8 sm:p-10 lg:max-w-[62%]">
+            <Link href={`/blog/${p.slug}`} className="group flex flex-1 flex-col p-8 sm:p-10 lg:max-w-[62%]">
               <h3 className="font-display text-xl font-semibold leading-snug text-mm-graphite transition group-hover:text-mm-graphite/80 sm:text-2xl">
                 {p.title}
               </h3>
               <p className="mt-4 font-editorial text-sm leading-relaxed text-mm-graphite/75">{p.dek}</p>
               <span className="mt-8 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-graphite underline underline-offset-[10px]">
                 <HiArrowUpRight className="h-4 w-4" />
-                {p.ctaLabel}
+                Read insight
               </span>
               <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.22em] text-mm-graphite/50">
-                • {p.brandTag} · {p.date.replace(/-/g, " · ")}
+                ■ Media Mantra Global · {p.date.replace(/-/g, " · ")}
               </p>
               <span className="mt-4 inline-flex w-fit rounded-full border border-mm-graphite/15 bg-[#ebe8df] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.22em] text-mm-graphite">
                 {p.category}
               </span>
             </Link>
             <Link
-              href={p.href}
+              href={`/blog/${p.slug}`}
               className="relative aspect-square w-full shrink-0 border-t border-mm-graphite sm:w-[clamp(220px,30vw,320px)] sm:border-l sm:border-t-0"
             >
               <Image src={p.coverImage} alt="" fill className="object-cover" sizes="320px" />
