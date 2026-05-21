@@ -31,12 +31,8 @@ export const homeLocations = {
 /** Hero — second word gets blue highlight (`HomeHeroSection`). Leave empty to hide banner headline. */
 export const homeHopscotchHero = {
   headline: "",
-  subline: introParagraphs[0],
-  tradeLinks: [
-    { label: "Powered by AI", href: "/about" },
-    { label: "Driven by creativity", href: "/about" },
-    { label: "Defined by strategy", href: "/about" },
-  ],
+  subline: "",
+  tradeLinks: [] as readonly { label: string; href: string }[],
   discoverLabel: "Explore",
   discoverHref: "#intro-split" as const,
 } as const;

@@ -38,7 +38,7 @@ export function MediaMantraLogo({
       : "rounded-lg bg-mm-white px-2 py-px ring-1 ring-mm-graphite/15 sm:px-3 sm:py-0.5";
 
   const imgHeight =
-    density === "full" ? "h-[116px] sm:h-[136px]" : "h-[88px] sm:h-[96px] md:h-[104px]";
+    density === "full" ? "h-[100px] sm:h-[120px]" : "h-[72px] sm:h-[80px] md:h-[88px]";
 
   return (
     <span className={cn("group inline-flex flex-col items-start gap-3", className)}>
@@ -50,8 +50,8 @@ export function MediaMantraLogo({
           height={413}
           sizes={
             density === "compact"
-              ? "(max-width: 768px) 360px, 440px"
-              : "(max-width: 768px) 400px, 480px"
+              ? "(max-width: 768px) 300px, 380px"
+              : "(max-width: 768px) 360px, 420px"
           }
           className={cn(
             "block w-auto max-w-none object-contain object-center align-top leading-none",

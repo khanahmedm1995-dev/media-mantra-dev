@@ -31,7 +31,9 @@ export function HomeHeroSection() {
   const { headline, subline, tradeLinks, discoverLabel, discoverHref } = homeHopscotchHero;
   const words = headline.trim().split(/\s+/).filter(Boolean);
   const hasVisibleHeadline = words.length > 0;
+  const hasVisibleSubline = subline.trim().length > 0;
   const highlightAt = hasVisibleHeadline ? Math.min(1, Math.max(0, words.length - 1)) : 0;
+  const hasVisibleTradeLinks = tradeLinks.length > 0;
 
   return (
     <section
@@ -101,15 +103,21 @@ export function HomeHeroSection() {
                 )}
               </h1>
 
-              <p
-                className={`font-editorial text-[0.9375rem] uppercase tracking-[0.28em] text-mm-cream/55 ${hasVisibleHeadline ? "mt-6" : "mt-0"}`}
-              >
-                {subline}
-              </p>
+              {hasVisibleSubline ? (
+                <p
+                  className={`font-editorial text-[0.9375rem] uppercase tracking-[0.28em] text-mm-cream/55 ${hasVisibleHeadline ? "mt-6" : "mt-0"}`}
+                >
+                  {subline}
+                </p>
+              ) : null}
 
-              <p className="mx-auto mt-10 max-w-2xl font-editorial text-[0.8125rem] font-semibold uppercase tracking-[0.24em] text-mm-cream/78 lg:mx-0">
-                {tradeLinks.map((t) => t.label).join(" — ")}
-              </p>
+              {hasVisibleTradeLinks ? (
+                <p
+                  className={`mx-auto max-w-2xl font-editorial text-[0.8125rem] font-semibold uppercase tracking-[0.24em] text-mm-cream/78 lg:mx-0 ${hasVisibleSubline || hasVisibleHeadline ? "mt-10" : "mt-0"}`}
+                >
+                  {tradeLinks.map((t) => t.label).join(" — ")}
+                </p>
+              ) : null}
 
               <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-mm-cream/88 lg:mx-0 lg:justify-start">
                 <Link
