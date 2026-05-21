@@ -64,7 +64,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="max-w-xl space-y-8">
           <div className="max-w-xl space-y-6 font-editorial text-[1.05rem] leading-[1.85] text-mm-light">
             {aboutRecognition.map((p) => (
               <p key={p.slice(0, 40)}>{p}</p>
