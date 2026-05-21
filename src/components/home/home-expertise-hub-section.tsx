@@ -8,7 +8,7 @@ import { HiArrowRight } from "react-icons/hi2";
 /** Hopscotch-style “trades & sectors” band — airy cream panel, pills, minimal chrome */
 export function HomeExpertiseHubSection() {
   return (
-    <section id="expertise" className="scroll-mt-28 bg-mm-cream py-16 text-mm-graphite lg:scroll-mt-32 lg:py-24">
+    <section id="expertise" className="scroll-mt-28 bg-mm-cream py-20 text-mm-graphite lg:scroll-mt-32 lg:py-[clamp(5rem,14vw,8.5rem)]">
       <Container>
         <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-gold">{homeExpertiseHub.label}</p>
         <h2 className="mt-6 max-w-4xl font-display text-[clamp(1.75rem,3.8vw,2.85rem)] font-semibold leading-[1.1] tracking-tight text-mm-royal">

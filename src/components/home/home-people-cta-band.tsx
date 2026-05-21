@@ -9,10 +9,11 @@ export function HomePeopleCtaBand() {
   return (
     <section className="scroll-mt-28 bg-mm-charcoal py-14 lg:scroll-mt-32 lg:py-20">
       <Container>
-        <div className="grid gap-10 overflow-hidden rounded-[2rem] bg-mm-black/40 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-stretch lg:gap-0">
+        {/* Photo-forward split — Hopscotch People: imagery dominates ~58% */}
+        <div className="grid gap-10 overflow-hidden rounded-[2rem] bg-mm-black/40 lg:grid-cols-[minmax(0,1.22fr)_minmax(0,0.78fr)] lg:items-stretch lg:gap-0">
           <Link
             href={homePeopleBand.cta.href}
-            className="group relative isolate order-2 min-h-[280px] lg:order-1 lg:min-h-[420px]"
+            className="group relative isolate order-2 min-h-[300px] lg:order-1 lg:min-h-[min(52vh,520px)]"
             aria-label={`${homePeopleBand.cta.label} — Careers`}
           >
             <Image

@@ -4,131 +4,143 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { HiArrowDown } from "react-icons/hi2";
-import { Button } from "@/components/ui/button";
-import { MagneticWrap } from "@/components/motion/magnetic-wrap";
-import { homeHero } from "@/data/home-content";
+import { homeHopscotchHero } from "@/data/home-content";
 import { useContactLead } from "@/components/contact/contact-lead-context";
 import { Container } from "@/components/ui/container";
 
-/** Client hero — source: `public/videos/home-hero.mp4` (replace file to swap reel). */
 const HERO_VIDEO = "/videos/home-hero.mp4";
 
-/** Full-bleed video hero patterned after editorial comms benchmarks (Hopscotch-style pacing). */
+const heroNav = [
+  { label: "About", href: "/about" },
+  { label: "Expertise", href: "#expertise" },
+] as const;
+
+/**
+ * Hopscotch-style hero — engineering grid, oversized caps headline + blue highlight,
+ * upper utility nav, faint film (layout reference hopscotch.one).
+ */
 export function HomeHeroSection() {
   const { openContact } = useContactLead();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yMain = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
   const opacityHero = useTransform(scrollYProgress, [0, 0.88], [1, 0]);
 
   const jump = (id: string) =>
-    typeof document !== "undefined" &&
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    typeof document !== "undefined" && document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+  const { headline, subline, tradeLinks, discoverLabel, discoverHref } = homeHopscotchHero;
+  const words = headline.trim().split(/\s+/).filter(Boolean);
+  const hasVisibleHeadline = words.length > 0;
+  const highlightAt = hasVisibleHeadline ? Math.min(1, Math.max(0, words.length - 1)) : 0;
 
   return (
     <section
       ref={ref}
       id="home"
-      className="relative isolate min-h-[100svh] overflow-hidden bg-mm-charcoal"
+      className="mm-hop-grid-bg relative isolate min-h-[100svh] min-h-[100dvh] overflow-hidden"
       aria-label="Homepage hero"
     >
-      <video
-        className="absolute inset-0 h-full w-full object-cover opacity-[0.48]"
-        src={HERO_VIDEO}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-mm-charcoal/90 via-mm-black/20 to-mm-charcoal mm-mesh" />
-      <div className="pointer-events-none absolute -left-[20%] top-[-18%] h-[50vh] w-[50vh] rounded-full bg-mm-gold/12 blur-[110px]" />
-      <div className="pointer-events-none absolute -right-[12%] bottom-[-40%] h-[55vh] w-[55vh] rounded-full bg-mm-white/[0.04] blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
+        <video
+          className="absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 object-cover saturate-[1.05]"
+          src={HERO_VIDEO}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+        {/* Light tint so headline stays readable without hiding the film */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-black/50" />
+      </div>
 
-      <motion.div style={{ opacity: opacityHero }} className="relative z-10 flex min-h-[100svh] flex-col">
-        <div className="flex flex-1 flex-col justify-end pb-16 pt-[6.75rem] sm:px-0 lg:justify-center lg:pb-28 lg:pt-[5.5rem]">
-          <Container className="max-w-[1200px]">
-            <motion.div style={{ y: yMain }} className="max-w-[46rem]">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.06, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display text-[clamp(2rem,6.25vw,4.42rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-mm-cream"
-              >
-                {homeHero.lines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </motion.h1>
+      <motion.div
+        style={{ opacity: opacityHero }}
+        className="relative z-10 flex min-h-[100svh] flex-col pt-[5.5rem] lg:pt-[4.75rem]"
+      >
+        <Container className="max-w-[1400px]">
+          <nav
+            className="flex flex-wrap gap-x-7 gap-y-3 border-b border-mm-cream/[0.07] pb-8 text-[10px] font-semibold uppercase tracking-[0.34em] text-mm-cream/72"
+            aria-label="Section shortcuts"
+          >
+            {heroNav.map((item) => (
+              <Link key={item.href + item.label} href={item.href} className="transition hover:text-mm-cream">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </Container>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.16, duration: 0.55 }}
-                className="mt-8 max-w-2xl font-editorial text-lg leading-[1.7] text-mm-cream/[0.92] md:text-xl"
-              >
-                {homeHero.agencyLine}
-              </motion.p>
+        <div className="flex flex-1 flex-col justify-end px-5 pb-20 pt-10 sm:px-8 lg:pb-28">
+          <Container className="max-w-[1100px]">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="text-center lg:text-left"
+            >
+              <h1 className="font-display text-[clamp(1.65rem,6.5vw,4rem)] font-semibold uppercase leading-[0.98] tracking-tight text-mm-cream">
+                {!hasVisibleHeadline ? (
+                  <span className="sr-only">Media Mantra Global</span>
+                ) : (
+                  <>
+                    <span className="sr-only">Media Mantra Global — </span>
+                    {words.map((w, i) =>
+                      i === highlightAt ? (
+                        <span
+                          key={i}
+                          className="mx-1 inline-block bg-[#0d47cc] px-2 py-1 align-middle text-mm-cream sm:px-3 sm:py-1.5"
+                        >
+                          {w}
+                        </span>
+                      ) : (
+                        <span key={i}>{w} </span>
+                      ),
+                    )}
+                  </>
+                )}
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.22, duration: 0.55 }}
-                className="mt-5 max-w-2xl font-display text-[11px] font-semibold uppercase tracking-[0.22em] text-mm-gold/95 md:text-xs"
+              <p
+                className={`font-editorial text-[0.9375rem] uppercase tracking-[0.28em] text-mm-cream/55 ${hasVisibleHeadline ? "mt-6" : "mt-0"}`}
               >
-                {homeHero.badge}
-              </motion.p>
+                {subline}
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.28, duration: 0.5 }}
-                className="mt-7"
-              >
+              <p className="mx-auto mt-10 max-w-2xl font-editorial text-[0.8125rem] font-semibold uppercase tracking-[0.24em] text-mm-cream/78 lg:mx-0">
+                {tradeLinks.map((t) => t.label).join(" — ")}
+              </p>
+
+              <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-mm-cream/88 lg:mx-0 lg:justify-start">
+                <Link
+                  href={discoverHref}
+                  className="border-b border-mm-gold pb-0.5 text-mm-gold transition hover:text-mm-cream"
+                >
+                  {discoverLabel}
+                </Link>
+                <span className="text-mm-cream/35" aria-hidden>
+                  ·
+                </span>
                 <button
                   type="button"
-                  className="text-[10px] font-semibold uppercase tracking-[0.32em] text-mm-cream/90 underline decoration-mm-gold/60 underline-offset-8 transition hover:text-mm-gold"
-                  onClick={() => jump("intro")}
+                  onClick={openContact}
+                  className="border-b border-transparent pb-0.5 transition hover:border-mm-cream"
                 >
-                  Discover
+                  Contact
                 </button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.38, duration: 0.6 }}
-                className="mt-12 flex flex-wrap items-center gap-4 lg:gap-5"
-              >
-                <MagneticWrap>
-                  <Button type="button" size="lg" className="px-9" onClick={openContact}>
-                    Get in Touch
-                  </Button>
-                </MagneticWrap>
-                <MagneticWrap strength={0.12}>
-                  <Button asChild variant="outline" size="lg" className="border-mm-white/[0.12] px-9">
-                    <Link href="/case-studies">See Our Work</Link>
-                  </Button>
-                </MagneticWrap>
-                <MagneticWrap strength={0.08}>
-                  <Button asChild variant="ghost" size="lg" className="text-mm-light hover:text-mm-gold">
-                    <Link href="/contact">Book a Strategy Call</Link>
-                  </Button>
-                </MagneticWrap>
-              </motion.div>
+              </div>
             </motion.div>
           </Container>
         </div>
 
         <motion.button
           type="button"
-          aria-label="Scroll to intro"
-          className="absolute bottom-28 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-mm-light transition hover:text-mm-gold md:flex"
+          aria-label="Scroll to content"
+          className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-1 rounded-full px-3 py-2 text-mm-light transition hover:text-mm-gold md:bottom-8"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 8, 0] }}
+          animate={{ opacity: 1, y: [0, 5, 0] }}
           transition={{ delay: 0.85, duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          onClick={() => jump("intro")}
+          onClick={() => jump("intro-split")}
         >
           <span className="text-[9px] uppercase tracking-[0.48em]">Scroll</span>
           <HiArrowDown className="h-5 w-5" />

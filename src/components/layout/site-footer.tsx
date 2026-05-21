@@ -25,7 +25,7 @@ export function SiteFooter() {
             <span className="hidden h-10 w-px bg-mm-white/15 sm:block" aria-hidden />
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-mm-gold">Offices</p>
-              <p className="mt-2 text-sm text-mm-light">{offices.map((o) => o.region).join(" · ")}</p>
+              <p className="mt-2 text-sm text-mm-light">{offices.map((o) => o.region).join(" | ")}</p>
             </div>
           </div>
         </div>

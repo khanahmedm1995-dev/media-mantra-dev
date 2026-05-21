@@ -135,10 +135,33 @@ h6 {
   animation: mm-marquee 48s linear infinite;
 }
 
+/** Client logos — slower drift; pause on hover (#clients) when motion OK */
+.mm-marquee-track-clients {
+  animation: mm-marquee 240s linear infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #clients:hover .mm-marquee-track-clients {
+    animation-play-state: paused;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mm-marquee-track {
     animation: none;
   }
+  .mm-marquee-track-clients {
+    animation: none;
+  }
+}
+
+/* Hopscotch-style subtle engineering grid on near-black */
+.mm-hop-grid-bg {
+  background-color: #0a0a0a;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 52px 52px;
 }
 
 /* Gradient mesh subtle motion */

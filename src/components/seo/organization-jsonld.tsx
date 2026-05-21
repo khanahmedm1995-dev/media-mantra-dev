@@ -8,7 +8,7 @@ export function OrganizationJsonLd() {
     legalName: siteConfig.legalName,
     url: siteConfig.url,
     description: siteConfig.description,
-    logo: `${siteConfig.url}/favicon.ico`,
+    logo: `${siteConfig.url}/brand/mm-global-lockup.png`,
     sameAs: [
       "https://www.linkedin.com/company/mediamantaraglobal/",
       "https://www.instagram.com/",

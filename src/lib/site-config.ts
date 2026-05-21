@@ -3,7 +3,7 @@ export const siteConfig = {
   legalName: "Media Mantra Global Communications",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mediamantaraglobal.com",
   description:
-    "Independent global integrated communications agency — PR, reputation, digital, and influence built for Fortune-grade brands.",
+    "Independent global integrated communications agency — PR, reputation, digital, and influence across India, UAE, and Singapore.",
   twitter: "@mediamantraglobal",
   locale: "en_US",
 };

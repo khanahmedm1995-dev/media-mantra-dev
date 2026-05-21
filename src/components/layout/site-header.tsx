@@ -61,16 +61,14 @@ export function SiteHeader() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[120] transition-all duration-500",
-          scrolled
-            ? "bg-mm-black/70 py-3 shadow-[0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-2xl"
-            : "bg-gradient-to-b from-mm-black/85 via-mm-black/30 to-transparent py-5",
+          "fixed inset-x-0 top-0 z-[120] border-b border-white/[0.06] backdrop-blur-xl transition-all duration-500",
+          scrolled ? "bg-black/40 py-3 shadow-[0_10px_36px_rgba(0,0,0,0.14)]" : "bg-black/25 py-5",
         )}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
           <Link
             href="/"
-            className="group flex items-start"
+            className="group flex items-center"
             aria-label="Media Mantra Global — Home"
           >
             <MediaMantraLogo variant="onDark" density="compact" />

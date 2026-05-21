@@ -1,21 +1,23 @@
 # Client logo files (homepage marquee)
 
-Place approved logo files here from the shared Drive (ask Pooja / brand for the pack).
+Approved raster pack lives here as **`logo-01.png` … `logo-29.png`**.
 
-## Naming
+## How mapping works
 
-In `src/data/clients.ts`, add a line inside **`clientLogoFiles`** for each brand, pointing at the file you add here:
+In **`src/data/clients.ts`**, `clientLogoFiles` assigns those files to the **first 29 entries** of `clientLogos` in **PDF order** (same order as the marquee):
 
-```ts
-export const clientLogoFiles = {
-  Sony: "/clients/sony.svg",
-  // ...
-};
-```
+| Slot file       | Brand (from PDF list, position 1-based) |
+|-----------------|-----------------------------------------|
+| `logo-01.png`   | 1 — Sony                                |
+| `logo-02.png`   | 2 — BOAT                                |
+| …               | …                                       |
+| `logo-29.png`   | 29 — Eastman Energy Ltd                 |
 
-The **object key** must match the string in `clientLogos` **exactly** (same spelling and punctuation). That list is kept in sync with the approved website content PDF (client names).
+Clients **after** slot 29 still appear in the marquee as **text** until you add more files and extend the mapping.
+
+If any raster is under the wrong name, **rename swap** the PNG files (`logo-NN.png`) — keys in code stay tied to PDF spelling.
 
 ## File tips
 
-- Prefer **SVG**; PNG with transparent background ok
-- Tall logos: max height ~40px in layout; wide logos scale inside a fixed slot (~140×40px)
+- Prefer **SVG** when brand supplies it; PNG ok (transparent background reads best on the cream marquee band).
+- Layout holds logos in roughly **140 × 40 px** slots (`object-contain`).

@@ -1,107 +1,71 @@
 "use client";
 
-import { useId } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/cn";
 
-const GOLD = "#D2B450";
-/** Mantra Navy — identity manual (second “mm” pair) */
-const NAVY = "#191970";
+/** Official identity lockup — full-colour PNG (`public/brand/mm-global-lockup.png`). */
+const LOGO_SRC = "/brand/mm-global-lockup.png";
 
 type LogoVariant = "onDark" | "onLight";
 
-/**
- * Brand **mm** symbol — joined lowercase *mm*: first pair Mantra Gold, second pair Mantra Navy
- * (Print & environment / brand applications).
- */
-export function LogoMark({ variant: _variant, className }: { variant: LogoVariant; className?: string }) {
-  const clipId = `mm-band-${useId().replace(/:/g, "")}`;
-
-  return (
-    <svg
-      viewBox="0 0 108 26"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("shrink-0", className)}
-      aria-hidden
-    >
-      <defs>
-        <clipPath id={clipId}>
-          <rect width="108" height="18" x="0" y="0" />
-        </clipPath>
-      </defs>
-      <g clipPath={`url(#${clipId})`}>
-        <ellipse cx="20" cy="34" rx="19" ry="30" fill={GOLD} />
-        <ellipse cx="38" cy="34" rx="19" ry="30" fill={GOLD} />
-        <ellipse cx="62" cy="34" rx="19" ry="30" fill={NAVY} />
-        <ellipse cx="80" cy="34" rx="19" ry="30" fill={NAVY} />
-      </g>
-      <path d="M10 18h88" stroke={GOLD} strokeWidth="1.15" strokeLinecap="round" opacity={0.9} />
-    </svg>
-  );
-}
-
 type Props = {
   variant: LogoVariant;
-  /** Mark + wordmark lines */
+  /** When false, still shows full lockup (PNG includes wordmark). */
   wordmark?: boolean;
-  /** Alternate lockup: all-caps wordmark under mark */
+  /** Unused — raster lockup already uses caps wordmark. */
   captionCaps?: boolean;
-  /** Nav bar: slim stack. Footer: adds gold tagline + markets line */
+  /** Nav: compact height. Footer: slightly taller + optional lines below image. */
   density?: "compact" | "full";
   className?: string;
 };
 
 /**
- * Full lockup: mm mark + “Media Mantra Global” (sans wordmark styling).
+ * Approved brand lockup (`public/brand/mm-global-lockup.png`).
+ * Dark UI surfaces use a light backing so colours stay accurate (asset ships on white).
  */
 export function MediaMantraLogo({
   variant,
   wordmark = true,
-  captionCaps = false,
+  captionCaps: _captionCaps = false,
   density = "compact",
   className,
 }: Props) {
-  const titleClass =
-    variant === "onDark"
-      ? "text-mm-cream group-hover:text-mm-gold"
-      : "text-mm-graphite group-hover:text-mm-ink";
   const sub = variant === "onDark" ? "text-mm-light group-hover:text-mm-cream/90" : "text-mm-graphite/90";
 
+  const backing =
+    variant === "onDark"
+      ? "rounded-lg bg-mm-cream px-2 py-px shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] ring-1 ring-black/10 sm:px-3 sm:py-0.5"
+      : "rounded-lg bg-mm-white px-2 py-px ring-1 ring-mm-graphite/15 sm:px-3 sm:py-0.5";
+
+  const imgHeight =
+    density === "full" ? "h-[116px] sm:h-[136px]" : "h-[88px] sm:h-[96px] md:h-[104px]";
+
   return (
-    <span className={cn("inline-flex flex-col items-start gap-1.5", className)}>
-      <LogoMark variant={variant} className="h-9 w-[5.1rem] sm:h-10 sm:w-[5.65rem]" />
-      {wordmark ? (
-        captionCaps ? (
-          <span
-            className={cn(
-              "font-display text-[9px] font-semibold uppercase tracking-[0.42em]",
-              variant === "onDark" ? "text-mm-cream" : "text-mm-graphite",
-            )}
-          >
-            Media Mantra Global
-          </span>
-        ) : (
-          <>
-            <span className={cn("font-display text-[0.6875rem] font-medium leading-none tracking-[0.14em]", titleClass)}>
-              Media Mantra Global
-            </span>
-            {density === "full" ? (
-              <>
-                <span
-                  className={cn(
-                    "font-display text-[8px] font-semibold uppercase tracking-[0.38em]",
-                    variant === "onDark" ? "text-mm-gold/90" : "text-mm-gold/90",
-                  )}
-                >
-                  Integrated communications
-                </span>
-                <span className={cn("text-[7px] font-medium uppercase tracking-[0.42em]", sub)}>
-                  India · UAE · Singapore
-                </span>
-              </>
-            ) : null}
-          </>
-        )
+    <span className={cn("group inline-flex flex-col items-start gap-3", className)}>
+      <span className={cn("inline-flex shrink-0 items-center justify-center", backing)}>
+        <Image
+          src={LOGO_SRC}
+          alt="Media Mantra Global"
+          width={1024}
+          height={413}
+          sizes={
+            density === "compact"
+              ? "(max-width: 768px) 360px, 440px"
+              : "(max-width: 768px) 400px, 480px"
+          }
+          className={cn(
+            "block w-auto max-w-none object-contain object-center align-top leading-none",
+            imgHeight,
+          )}
+          priority={density === "compact"}
+          draggable={false}
+        />
+      </span>
+
+      {wordmark && density === "full" ? (
+        <span className={cn("text-[7px] font-medium uppercase tracking-[0.42em]", sub)}>
+          India · UAE · Singapore
+        </span>
       ) : null}
     </span>
   );
