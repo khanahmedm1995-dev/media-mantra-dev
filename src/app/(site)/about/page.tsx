@@ -23,7 +23,7 @@ export const metadata = createMetadata({
 
 export default function AboutPage() {
   return (
-    <main id="main-content" className="flex-1 bg-mm-black text-mm-cream">
+    <main id="main-content" className="flex-1 bg-mm-graphite text-mm-cream">
       <section className="relative overflow-hidden pt-12 lg:pt-16">
         <div className="pointer-events-none absolute inset-0 opacity-40">
           <div className="absolute -left-[18%] top-0 h-[480px] w-[480px] rounded-full bg-mm-gold/10 blur-[120px]" />
@@ -56,7 +56,7 @@ export default function AboutPage() {
               sizes="(max-width:1024px) 100vw,45vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-mm-black via-mm-black/15 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-mm-graphite via-mm-graphite/15 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
               <p className="font-display text-lg text-mm-cream md:text-xl">
                 Integrated communications — calibrated for prestige, scrutiny, and speed across three distinct markets.
@@ -82,8 +82,8 @@ export default function AboutPage() {
 
       <section className="py-20 lg:py-28">
         <Container>
-          <SectionLabel>The founders</SectionLabel>
-          <h2 className="mt-6 max-w-3xl font-display text-[clamp(1.95rem,3.8vw,2.85rem)] font-semibold leading-tight">
+          <SectionLabel>Founders</SectionLabel>
+          <h2 className="mt-6 max-w-3xl font-display text-[clamp(1.75rem,3.4vw,2.65rem)] font-semibold uppercase leading-tight tracking-[0.02em]">
             Meet the youngest independent founders
           </h2>
 
@@ -97,7 +97,7 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw,340px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-mm-black/50 to-transparent lg:bg-gradient-to-l" />
+                <div className="absolute inset-0 bg-gradient-to-r from-mm-graphite/50 to-transparent lg:bg-gradient-to-l" />
               </div>
               <div className="p-8 pb-10 pt-8 lg:p-12">
                 <h3 className="font-display text-2xl font-semibold md:text-3xl">Udit Pathak</h3>
@@ -128,7 +128,7 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw,340px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-mm-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-mm-graphite/40 to-transparent" />
               </div>
             </article>
           </div>

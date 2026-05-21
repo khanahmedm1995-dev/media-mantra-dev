@@ -22,14 +22,16 @@ Yeh document **pure site** ke hisaab se hai: har **page / section** jahan image/
 |---|----------------------|-----------|----------------------------|------|
 | 1 | **Hero** background video | MP4 H.264, landscape | **1920 × 1080** (ya **3840 × 2160**) | **1** video |
 | 2 | Hero **poster** (video fallback / slow network) | Still JPG/WebP | **2560 × 1440** (min **1920 × 1080**) | **1** |
-| 3 | **Intro** | _(text only)_ | — | — |
+| 3 | **Intro** | Editorial photo (team / culture / workspace) | **1200 × 900** (min **1000 × 750**); ~**4:3** crop | **1** JPG/WebP — matches `homeHopIntroSplit.imageSrc`; replace Unsplash when brand shot is ready |
 | 4 | **Locations** band | _(text + links)_ | — | — |
 | 5 | **Clients marquee** | Client **logo lockups** (SVG/PNG transparent) | Slot ~**140 × 40** visible; proportional lockup | Har client **1** file — map in `src/data/clients.ts` → `public/clients/` (see `public/clients/README.md`) |
 | 6 | **Proven results** (metrics band) | _(no hero image — animated numerals)_ | — | — |
 | 7 | **Work** (Hopscotch lead + grid) | Case study `heroImage` | Lead: **2560 × 1200** (min **1920 × 960**); grid cards same heroes **1920 × 1080** ok | Uses **case study** catalogue |
 | 8 | **Contact strip** | _(no image)_ | — | — |
 
-Blogs / insights listing lives on **`/blog` only** (not on the homepage). **Media Mantra Framework** imagery or long copy is documented under **`/about`** where that section lives.
+**Client logo pack:** Final transparent **SVG/PNG** lockups — track from the shared drive when coordinators share files; then drop under `public/clients/` per `public/clients/README.md` and keep `src/data/clients.ts` names aligned.
+
+Blogs listing lives on **`/blog` only** (not on the homepage). **Media Mantra Framework** lives on **`/about`** only.
 
 **Optional unused on home agar dubara lagao:** `global-cta-section` video → **1920 × 1080** MP4 (same spec as hero alternative).
 

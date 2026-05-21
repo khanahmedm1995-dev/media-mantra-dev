@@ -16,7 +16,7 @@ if (typeof window !== "undefined") {
 const steps = frameworkSteps;
 
 type FrameworkSectionProps = {
-  /** Tighter typography and shorter cards for homepage */
+  /** Tighter typography and shorter cards for compact layouts */
   condensed?: boolean;
 };
 

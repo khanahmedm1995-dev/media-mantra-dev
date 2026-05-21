@@ -37,11 +37,17 @@ export const homeHopscotchHero = {
   discoverHref: "#intro-split" as const,
 } as const;
 
-/** Section 2 — intro split under video banner */
+/** Section 2 — intro (distinct from hero: cream band + image; short copy; full story on /about) */
 export const homeHopIntroSplit = {
+  sectionLabel: "Intro",
   headline: "Beyond communications.\nWe are global influence.",
-  paragraphs: introParagraphs,
-  cta: { label: "Learn more", href: "/about" as const },
+  paragraphs: [
+    "Independent, integrated communications across India, the UAE & Singapore — sharpened by AI, led by creativity, anchored in strategy.",
+  ],
+  imageSrc:
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=82",
+  imageAlt: "Team collaborating on communications strategy",
+  cta: { label: "About Media Mantra", href: "/about" as const },
 } as const;
 
 export const homeCsrBand = {
@@ -81,7 +87,7 @@ export const homePeopleBand = {
 } as const;
 
 export const homeInsightsRibbon = {
-  label: "Insights",
+  label: "Blogs",
   cta: { label: "View all", href: "/blog" as const },
 } as const;
 
@@ -170,8 +176,8 @@ export const homeProven = {
 };
 
 export const homeFrameworkIntro = {
-  label: "Framework",
-  headline: "How we ship outcomes",
+  label: "Media Mantra Global Framework",
+  headline: "We built a system and that's the reason brands choose us",
   description: "",
 };
 
@@ -184,9 +190,9 @@ export const homeWork = {
 } as const;
 
 export const homeInsights = {
-  label: "Insights",
-  headline: "Thinking out loud.",
-  description: "Notes from our desks — sharper briefs start with sharper reading.",
+  label: "Blogs",
+  headline: "Notes from our teams",
+  description: "Practical perspective on communications, markets, and craft.",
 };
 
 export const homeCta = {

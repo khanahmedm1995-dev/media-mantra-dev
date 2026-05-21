@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }: Props) {
   };
 
   return (
-    <main id="main-content" className="flex-1 bg-mm-black pb-24 pt-6 text-mm-cream lg:pt-8">
+    <main id="main-content" className="flex-1 bg-mm-graphite pb-24 pt-6 text-mm-cream lg:pt-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <Container>
         <Link href="/blog" className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-light">

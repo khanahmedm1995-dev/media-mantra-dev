@@ -12,7 +12,8 @@ const HERO_VIDEO = "/videos/home-hero.mp4";
 
 const heroNav = [
   { label: "About", href: "/about" },
-  { label: "Expertise", href: "#expertise" },
+  { label: "Intro", href: "#intro-split" },
+  { label: "Locations", href: "#locations" },
 ] as const;
 
 /**
@@ -53,7 +54,7 @@ export function HomeHeroSection() {
           preload="auto"
         />
         {/* Light tint so headline stays readable without hiding the film */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-mm-graphite/30 via-mm-graphite/40 to-mm-graphite/55" />
       </div>
 
       <motion.div

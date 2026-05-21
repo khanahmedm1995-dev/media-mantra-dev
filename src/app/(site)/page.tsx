@@ -11,7 +11,7 @@ import { HomeContactStrip } from "@/components/home/home-contact-strip";
  */
 export default function HomePage() {
   return (
-    <main id="main-content" className="flex flex-1 flex-col bg-black">
+    <main id="main-content" className="flex flex-1 flex-col bg-mm-graphite">
       <HomeHeroSection />
       <HomeHopIntroSplit />
       <HomeLocationsBand />
