@@ -37,8 +37,9 @@ export function MediaMantraLogo({
       ? "rounded-lg bg-mm-cream px-2 py-px shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] ring-1 ring-black/10 sm:px-3 sm:py-0.5"
       : "rounded-lg bg-mm-white px-2 py-px ring-1 ring-mm-graphite/15 sm:px-3 sm:py-0.5";
 
+  /** ~30% smaller footprint than previous nav/footer sizes (proportional lockup). */
   const imgHeight =
-    density === "full" ? "h-[100px] sm:h-[120px]" : "h-[72px] sm:h-[80px] md:h-[88px]";
+    density === "full" ? "h-[70px] sm:h-[84px]" : "h-[50px] sm:h-[56px] md:h-[62px]";
 
   return (
     <span className={cn("group inline-flex flex-col items-start gap-3", className)}>
@@ -50,8 +51,8 @@ export function MediaMantraLogo({
           height={413}
           sizes={
             density === "compact"
-              ? "(max-width: 768px) 300px, 380px"
-              : "(max-width: 768px) 360px, 420px"
+              ? "(max-width: 768px) 210px, 266px"
+              : "(max-width: 768px) 252px, 294px"
           }
           className={cn(
             "block w-auto max-w-none object-contain object-center align-top leading-none",
