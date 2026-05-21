@@ -1,34 +1,35 @@
 @import "tailwindcss";
 
 /*
- * Media Mantra Global — COLOUR PALETTE (brand guidelines + web surfaces)
+ * Media Mantra Global — COLOUR + TYPOGRAPHY
  * -----------------------------------------------------------------------
- * Mantra Navy  #191970   → --mm-royal   (accent; use sparingly vs “SaaS purple”)
- * Mantra Gold  #D2B450   → --mm-gold
- * Charcoal / Graphite #4A4A4A → primary page base + --mm-graphite
- * Cream #FFFFE3  → --mm-cream
- * Silver #A4A4A4 → --mm-light
- * White #FFFFFF  → --mm-white
- *
- * UI layers use deep graphite (--mm-black, --mm-ink) instead of pure black.
+ * Typography: exactly two families on the site —
+ *   • Headings: var(--font-heading) from next/font (Oswald as web stand-in for Special Gothic)
+ *   • Body: "Clash Display" (Fontshare) — all editorial / UI text
+ * Brand Mantra Navy #191970: reserved for logo lockup / print — UI uses neutral ink (below) to avoid “SaaS purple” screens.
+ * Mantra Gold #D2B450, graphite/cream surfaces per guidelines.
  */
 
 :root {
-  /* Typography: Special Gothic + Clash equivalents (Google-licensed pair) */
-  --font-oswald: "Oswald", system-ui, sans-serif;
-  --font-space-grotesk: "Space Grotesk", system-ui, sans-serif;
-  /* Legacy aliases — map to the new stack so existing classes keep working */
-  --font-syne: var(--font-oswald);
-  --font-dm-sans: var(--font-space-grotesk);
-  --font-editorial: var(--font-space-grotesk);
+  /* Body stack — Clash Display only (+ system fallback). Loaded via Fontshare in root layout. */
+  --font-body: "Clash Display", ui-sans-serif, system-ui, sans-serif;
+  /* Legacy aliases mapped to the two-family system */
+  --font-oswald: var(--font-heading);
+  --font-space-grotesk: var(--font-body);
+  --font-syne: var(--font-heading);
+  --font-dm-sans: var(--font-body);
+  --font-editorial: var(--font-body);
 
-  /* Surfaces: graphite-first; avoid true black per brand direction */
-  --mm-black: #3a3a3a;
-  --mm-pure-black: #2c2c2c;
-  --mm-ink: #333333;
-  --mm-midnight: #383840;
+  /* Surfaces: brand graphite #4A4A4A is the base — avoid near-black UI chrome */
+  --mm-black: #4a4a4a;
+  --mm-pure-black: #3d3d3d;
+  --mm-ink: #434343;
+  --mm-midnight: #505050;
 
-  --mm-royal: #191970;
+  /* Editorial ink for UI type / rules — desaturated, not violet/indigo on screen */
+  --mm-royal: #2f3640;
+  /* True brand navy — only for rare accents if needed (prefer gold/graphite in layout) */
+  --mm-brand-navy: #191970;
   --mm-gold: #d2b450;
   --mm-graphite: #4a4a4a;
   --mm-charcoal: #4a4a4a;
@@ -49,15 +50,15 @@
   --color-mm-gold: #d2b450;
   --color-mm-light: #a4a4a4;
   --color-mm-cream: #ffffe3;
-  --color-mm-royal: #191970;
+  --color-mm-royal: var(--mm-royal);
   --color-mm-white: #ffffff;
   --color-mm-black: var(--mm-black);
   --color-mm-pure-black: var(--mm-pure-black);
   --color-mm-ink: var(--mm-ink);
   --color-mm-charcoal: #4a4a4a;
   --color-mm-midnight: var(--mm-midnight);
-  --font-sans: var(--font-space-grotesk);
-  --font-display: var(--font-oswald);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
   --breakpoint-3xl: 120rem;
 }
 
@@ -68,8 +69,17 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-family: var(--font-body);
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), var(--font-body), system-ui, sans-serif;
 }
 
 ::selection {
@@ -78,12 +88,26 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-oswald), var(--font-space-grotesk), system-ui, sans-serif;
+  font-family: var(--font-heading), var(--font-body), system-ui, sans-serif;
 }
 
 .font-editorial {
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-family: var(--font-body);
   font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Hopscotch-style rhythm helpers: alternate density without boxing every section */
+.mm-band-tight {
+  padding-top: clamp(3.5rem, 8vw, 5rem);
+  padding-bottom: clamp(3.5rem, 8vw, 5rem);
+}
+.mm-band-rest {
+  padding-top: clamp(5rem, 12vw, 8.5rem);
+  padding-bottom: clamp(5rem, 12vw, 8.5rem);
+}
+.mm-band-impact {
+  padding-top: clamp(6rem, 14vw, 10rem);
+  padding-bottom: clamp(6rem, 14vw, 10rem);
 }
 
 /* Film grain noise */

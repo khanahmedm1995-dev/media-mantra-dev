@@ -7,17 +7,17 @@ import {
   offices,
   socialLinks,
 } from "@/data/navigation";
-import { footerServicesLine } from "@/data/home-content";
+import { footerSeoParagraph, footerServicesLine } from "@/data/home-content";
 import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
 import { MediaMantraLogo } from "@/components/brand/media-mantra-logo";
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-16 border-t border-mm-white/[0.06] bg-mm-midnight/40">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mm-gold/50 to-transparent" />
+    <footer className="relative mt-20 bg-mm-midnight/25">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mm-gold/35 to-transparent" />
       <Container className="py-10 lg:py-14">
-        <div className="flex flex-col gap-8 border-b border-mm-white/[0.06] pb-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-x-10">
+        <div className="flex flex-col gap-8 pb-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-x-10">
           <Link href="/" className="group inline-flex max-w-fit" aria-label="Media Mantra Global — Home">
             <MediaMantraLogo variant="onDark" density="full" />
           </Link>
@@ -62,9 +62,11 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <p className="mt-10 line-clamp-3 text-sm leading-relaxed text-mm-light/85">{footerServicesLine}</p>
+        <p className="mt-10 text-sm leading-relaxed text-mm-light/85 lg:max-w-4xl">{footerSeoParagraph}</p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-mm-white/[0.06] pt-8">
+        <p className="mt-6 line-clamp-3 text-sm leading-relaxed text-mm-light/85">{footerServicesLine}</p>
+
+        <div className="mt-10 flex flex-wrap items-center gap-4 pt-8">
           <a
             href={socialLinks.linkedin}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-mm-white/12 text-mm-cream transition hover:border-mm-gold hover:text-mm-gold"

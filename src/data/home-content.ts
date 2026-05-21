@@ -1,23 +1,30 @@
-export const homeHero = {
-  chip: "Media Mantra Global",
-  badge: "Powered by AI · Driven by creativity · Defined by strategy",
-  lines: ["Beyond Communications.", "We Are More Than An Agency.", "We Are Global Influence."],
-  subhead: "Independent global integrated communications agency — engineered for prestige, scrutiny, and speed.",
-};
+/** Homepage & global chrome — source: `Media Mantra Global Website Content` PDF (May 2026). */
 
-/** Long-form editorial body for About page & regional landers — not folded into the condensed hero */
-export const homeHeroStory = [
-  "We're built for what's next — fuelled by 13 years turning bold ideas into measurable results. We started in traditional PR, grew into digital, and today we operate as a fully integrated communications agency, the only way we know how to work. From influencer ecosystems that move culture to digital and PR strategies that dominate search, we make communications the sharpest pillar of your marketing — whether the objective is a global launch, a viral strategy, or category ownership that lasts. Ranked the third‑fastest growing agency in AMEA by PRovoke Media four times running, we measure success in categories owned and campaigns people actually remember.",
-  "India. UAE. Singapore. Three of the world's most distinctive markets — and we don't just operate in them, we live in them. Our integrated international network brings a global vision to every brief with local understanding of every market, and the same uncompromising standard of quality in every relationship.",
-];
+const pdfSection2Body =
+  "We are built for what's next, fueled by 13 years of experience turning bold ideas into measurable results. We started in traditional PR, grew into digital, and today we operate as a fully integrated communications agency, the only way we know how to work. From influencer ecosystems that move culture to digital and PR strategies that dominate search, we make communications the sharpest pillar of your marketing, whether the objective is a global launch, a viral strategy, or category ownership that lasts. Ranked the third-fastest growing agency in AMEA by PRovoke Media four times running, we measure success in categories owned and campaigns that people actually remember.";
+
+const pdfSection3Locations =
+  "India. UAE. Singapore. Three of the world's most distinct markets, and we don't just operate in them, we live in them. Our integrated international network brings a global vision to every brief with a local understanding of every market, the same uncompromising standard of quality in every relationship, here and everywhere else we work.";
+
+export const homeHero = {
+  lines: ["BEYOND COMMUNICATIONS.", "WE ARE GLOBAL INFLUENCE."] as const,
+  agencyLine: "We are an independent global integrated communications agency",
+  badge: "Powered by AI. Driven by creativity. Defined by strategy.",
+} as const;
+
+/** Long-form editorial body for regional landers — matches homepage intro + locations (PDF). */
+export const homeHeroStory = [pdfSection2Body, pdfSection3Locations] as const;
 
 export const homeHeroAside = ["India · UAE · Singapore · One integrated network.", "13 years shaping narratives that compound."];
 
-export const homeHopscotchHero = {
-  eyebrow: "Integrated communications",
-  lineA: "Independent global communications group.",
-  lineB: "Digital · PR · Influence · Strategy",
-  discover: "Discover",
+export const homeIntro = {
+  label: "Intro",
+  paragraphs: [pdfSection2Body],
+} as const;
+
+export const homeLocations = {
+  label: "Locations",
+  paragraph: pdfSection3Locations,
 } as const;
 
 export const homeExpertiseHub = {
@@ -50,14 +57,20 @@ export const homeInsightsRibbon = {
 } as const;
 
 export const homeContactStrip = {
-  label: "Contact us",
-  line: "Start a mandate — Delhi, Dubai, or Singapore desks.",
+  label: "Contact",
+  headline: "Let's Build Influence Together",
+  lines: [
+    "Your brand deserves to be known. Loudly. In the right rooms. Across the right markets.",
+    "Let's figure out what that looks like, together.",
+  ],
+  primaryCta: "Get in Touch",
 } as const;
 
 export const homeClientsLead = {
   title: "Our Clients",
-  description: "Fortune‑grade portfolios and challenger brands — influence calibrated for boards and culture.",
-};
+  description:
+    "From Fortune 500 leaders to disruptive challengers, we help brands command influence where it matters most.",
+} as const;
 
 export const homeProven = {
   label: "Proven results across markets",
@@ -83,7 +96,7 @@ export const homeProven = {
     {
       key: "visibility",
       label: "3X AVERAGE VISIBILITY INCREASE",
-      dek: "Share of voice tripled — measurable, documented, repeatable.",
+      dek: "Share of voice tripled, measurable, documented, repeatable.",
       value: 3,
       suffix: "X" as const,
       displayType: "mult" as const,
@@ -100,19 +113,21 @@ export const homeProven = {
 };
 
 export const homeFrameworkIntro = {
-  label: "The Media Mantra Global Framework",
-  headline: "We built a system — that's why brands choose us.",
-  description: "The same calibre of editorial and digital thinking in Delhi, Dubai, and Singapore.",
+  label: "Media Mantra Global Framework",
+  headline: "We built a system and that's the reason brand choose us",
+  description: "",
 };
 
 export const homeWork = {
+  sectionLabel: "Our Work",
   label: "Case Studies",
   headline: "We Let the Work Talk.",
-  description: "Select programmes across India, the UAE & Singapore.",
-};
+  description:
+    "Ideas truly worth their weight in gold across India, UAE, and Singapore",
+} as const;
 
 export const homeInsights = {
-  label: "Blogs",
+  label: "Insights",
   headline: "Thinking Out Loud.",
   description:
     "Notes from our desks — sharper briefs start with sharper reading.",
@@ -121,13 +136,13 @@ export const homeInsights = {
 export const homeCta = {
   headline: "Let's Build Influence Together",
   description:
-    "Your brand deserves to be known — loudly, in the right rooms, across the right markets. Let's figure out what that looks like, together.",
+    "Your brand deserves to be known. Loudly. In the right rooms. Across the right markets. Let's figure out what that looks like, together.",
   primary: { label: "Get in Touch", href: "/contact" },
   secondary: { label: "See Our Work", href: "/case-studies" },
 };
 
 export const footerSeoParagraph =
-  "Media Mantra Global is a leading global PR & integrated communications firm with presence in India, UAE, and Singapore. We work with high-growth brands, ambitious founders, and category-defining companies to build media visibility, digital authority, and the kind of influence that actually changes markets. If you're looking for the best PR agency in India, a trusted PR agency in the UAE, or PR services in Singapore — you just found it.";
+  "Media Mantra Global is a leading global PR & integrated communications firm with presence in India, UAE, and Singapore. We work with high-growth brands, ambitious founders, and category-defining companies to build media visibility, digital authority, and the kind of influence that actually changes markets. If you're looking for the best PR agency in India, a trusted PR agency UAE, or PR Services in Singapore , you just found it.";
 
 export const footerServicesLine =
   "Strategic PR & Media Relations · Founder & Leadership Branding · Digital PR & SEO Authority · Global Market Entry PR · Reputation & Crisis Management · Influencer Marketing · SEO & Performance Marketing";

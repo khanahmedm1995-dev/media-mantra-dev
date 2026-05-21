@@ -24,7 +24,7 @@ export function InsightsPreviewSection({ variant = "full" }: Props) {
 
   if (variant === "ribbon") {
     return (
-      <section id="insights" className="scroll-mt-28 border-y border-mm-white/10 bg-mm-black py-16 lg:scroll-mt-32 lg:py-24">
+      <section id="insights" className="scroll-mt-28 bg-mm-black py-20 lg:scroll-mt-32 lg:py-28">
         <Container>
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
             <div>
@@ -42,7 +42,7 @@ export function InsightsPreviewSection({ variant = "full" }: Props) {
             </Link>
           </div>
 
-          <div className="mt-11 overflow-hidden rounded-[1.75rem] border border-mm-white/10 bg-mm-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl">
+          <div className="mt-11 overflow-hidden rounded-sm bg-mm-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
             <Swiper loop grabCursor slidesPerView={1} className="insights-home-swiper">
               {slides.map((p) => (
                 <SwiperSlide key={p.slug}>
@@ -59,7 +59,7 @@ export function InsightsPreviewSection({ variant = "full" }: Props) {
                         sizes="(max-width:1024px) 100vw,55vw"
                         priority={p.slug === featured.slug}
                       />
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-mm-black/75 via-mm-royal/25 to-transparent" />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-mm-black/75 via-mm-black/35 to-transparent" />
                     </Link>
                     <div className="flex flex-col justify-center gap-4 p-7 lg:gap-5 lg:p-12">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-gold">{p.category}</p>
@@ -87,7 +87,7 @@ export function InsightsPreviewSection({ variant = "full" }: Props) {
   }
 
   return (
-    <section className="relative border-y border-mm-white/10 bg-mm-black py-24 lg:py-32">
+    <section className="relative bg-mm-black py-24 lg:py-32">
       <Container>
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -105,7 +105,7 @@ export function InsightsPreviewSection({ variant = "full" }: Props) {
           </Link>
         </div>
 
-        <div className="mt-14 overflow-hidden rounded-[2rem] border border-mm-white/10 bg-mm-white/[0.03] backdrop-blur-2xl">
+        <div className="mt-14 overflow-hidden rounded-sm bg-mm-white/[0.03] backdrop-blur-xl">
           <Swiper modules={[Autoplay]} autoplay={{ delay: 6200, disableOnInteraction: false }} loop slidesPerView={1}>
             {blogPosts.slice(0, 3).map((p) => (
               <SwiperSlide key={p.slug}>
@@ -119,7 +119,7 @@ export function InsightsPreviewSection({ variant = "full" }: Props) {
                       sizes="(max-width:1024px) 100vw,55vw"
                       priority={p.slug === featured.slug}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-mm-black/80 via-mm-royal/35 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-mm-black/80 via-mm-black/40 to-transparent" />
                   </Link>
                   <div className="flex flex-col justify-center gap-6 p-8 lg:p-12">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-gold">{p.category}</p>

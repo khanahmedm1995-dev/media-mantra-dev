@@ -46,7 +46,7 @@ export function GlobalCtaSection({ compact = false }: Props) {
       <div
         className={cn(
           "absolute inset-0 bg-gradient-to-b from-mm-black",
-          compact ? "via-mm-royal/28 to-mm-black" : "via-mm-royal/45 to-mm-black",
+          compact ? "via-mm-black/38 to-mm-black" : "via-mm-graphite/55 to-mm-black",
         )}
       />
 

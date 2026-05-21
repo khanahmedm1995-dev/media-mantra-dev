@@ -22,13 +22,14 @@ Yeh document **pure site** ke hisaab se hai: har **page / section** jahan image/
 |---|----------------------|-----------|----------------------------|------|
 | 1 | **Hero** background video | MP4 H.264, landscape | **1920 × 1080** (ya **3840 × 2160**) | **1** video |
 | 2 | Hero **poster** (video fallback / slow network) | Still JPG/WebP | **2560 × 1440** (min **1920 × 1080**) | **1** |
-| 3 | **`/services` expertise pills** section | _(text + links only — photo nahi)_ | — | — |
-| 4 | **Clients marquee** | Client **logo lockups** (SVG/PNG transparent) | Canvas approx **320 × 120** each; logo proportional andar | Har client **1** file (~34 naam abhi code mein) |
-| 5 | **Integrated network** (navy stats band) | _(no hero image)_ | — | — |
-| 6 | **People band** (`homePeopleBand.image`) | Photo landscape | **2400 × 1600** (min **1920 × 1280**) | **1** |
-| 7 | **Our last news** ribbon | Uses **same** covers as `/blog` (see Blog table) | Card thumb crop **ca. 16∶10 visible** → source **1600 × 1000** min | — |
-| 8 | **Work** (Hopscotch lead + grid) | Case study `heroImage` | Lead: **2560 × 1200** (min **1920 × 960**); grid cards same heroes **1920 × 1080** ok | Uses **case study** catalogue |
-| 9 | **Contact strip** | _(no image)_ | — | — |
+| 3 | **Intro** | _(text only)_ | — | — |
+| 4 | **Locations** band | _(text + links)_ | — | — |
+| 5 | **Clients marquee** | Client **logo lockups** (SVG/PNG transparent) | Slot ~**140 × 40** visible; proportional lockup | Har client **1** file — map in `src/data/clients.ts` → `public/clients/` (see `public/clients/README.md`) |
+| 6 | **Proven results** (metrics band) | _(no hero image — animated numerals)_ | — | — |
+| 7 | **Work** (Hopscotch lead + grid) | Case study `heroImage` | Lead: **2560 × 1200** (min **1920 × 960**); grid cards same heroes **1920 × 1080** ok | Uses **case study** catalogue |
+| 8 | **Contact strip** | _(no image)_ | — | — |
+
+Blogs / insights listing lives on **`/blog` only** (not on the homepage). **Media Mantra Framework** imagery or long copy is documented under **`/about`** where that section lives.
 
 **Optional unused on home agar dubara lagao:** `global-cta-section` video → **1920 × 1080** MP4 (same spec as hero alternative).
 

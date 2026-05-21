@@ -17,7 +17,7 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed left-0 right-0 top-0 z-[180] h-[2px] origin-left bg-gradient-to-r from-mm-gold via-mm-cream to-mm-royal"
+      className="pointer-events-none fixed left-0 right-0 top-0 z-[180] h-[2px] origin-left bg-gradient-to-r from-mm-gold via-mm-cream to-mm-graphite"
       style={{ scaleX }}
     />
   );

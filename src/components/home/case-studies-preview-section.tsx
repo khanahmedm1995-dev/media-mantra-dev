@@ -29,12 +29,12 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
     if (!lead) return null;
 
     return (
-      <section id="work" className="scroll-mt-28 bg-mm-cream py-16 text-mm-graphite lg:scroll-mt-32 lg:py-24">
+      <section id="work" className="scroll-mt-28 bg-mm-cream py-20 text-mm-graphite lg:scroll-mt-32 lg:py-28">
         <Container>
-          <div className="flex flex-col gap-6 pb-12 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-8 pb-14 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.48em] text-mm-gold">Our latest work</p>
-              <h2 className="mt-6 font-display text-[clamp(2rem,4.2vw,3.15rem)] font-semibold leading-[1.05] tracking-tight text-mm-royal">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.48em] text-mm-gold">{homeWork.sectionLabel}</p>
+              <h2 className="mt-6 font-display text-[clamp(2rem,4.2vw,3.15rem)] font-semibold leading-[1.05] tracking-tight text-mm-graphite">
                 {homeWork.headline}
               </h2>
               <p className="mt-5 max-w-2xl font-editorial text-base leading-relaxed text-mm-graphite/78 md:text-lg">
@@ -43,7 +43,7 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
             </div>
             <Link
               href="/case-studies"
-              className="group inline-flex shrink-0 items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.34em] text-mm-royal underline-offset-[10px] transition hover:text-mm-graphite"
+              className="group inline-flex shrink-0 items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.34em] text-mm-graphite/80 underline-offset-[10px] transition hover:text-mm-graphite"
             >
               See more cases
               <HiArrowUpRight className="h-4 w-4 transition group-hover:translate-x-1" />
@@ -58,7 +58,7 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
           >
             <Link
               href={`/case-studies/${lead.slug}`}
-              className="group relative mt-6 block overflow-hidden rounded-[2.25rem]"
+              className="group relative mt-8 block overflow-hidden rounded-sm"
             >
               <div className="relative aspect-[3/4] min-h-[min(72vh,520px)] w-full md:aspect-[21/11] md:min-h-[min(62vh,480px)]">
                 <div className={`absolute inset-0 z-[1] bg-gradient-to-tr ${lead.accent} opacity-[0.52] mix-blend-multiply`} />
@@ -93,7 +93,7 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-24px" }}
                   transition={{ delay: index * 0.06, duration: 0.5 }}
-                  className="group/card flex min-h-[280px] flex-col overflow-hidden rounded-2xl border border-mm-graphite/[0.08] bg-mm-white shadow-[0_16px_50px_-30px_rgba(25,25,112,0.35)] transition hover:border-mm-royal/22"
+                  className="group/card flex min-h-[280px] flex-col overflow-hidden rounded-sm bg-mm-white shadow-[0_24px_70px_-40px_rgba(0,0,0,0.18)] transition hover:shadow-[0_32px_80px_-38px_rgba(0,0,0,0.22)]"
                 >
                   <Link
                     href={`/case-studies/${item.slug}`}
@@ -109,15 +109,15 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
                     />
                   </Link>
                   <div className="flex flex-1 flex-col px-6 py-6">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-mm-royal/75">{item.brand}</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-mm-graphite/75">{item.brand}</p>
                     <h3 className="mt-4 font-display text-xl font-semibold leading-snug text-mm-graphite">
-                      <Link href={`/case-studies/${item.slug}`} className="transition hover:text-mm-royal">
+                      <Link href={`/case-studies/${item.slug}`} className="transition hover:text-mm-graphite">
                         {item.title}
                       </Link>
                     </h3>
                     <Link
                       href={`/case-studies/${item.slug}`}
-                      className="mt-auto pt-8 inline-flex w-fit items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-royal"
+                      className="mt-auto pt-8 inline-flex w-fit items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-graphite"
                     >
                       See more <HiArrowUpRight className="h-4 w-4" />
                     </Link>
@@ -134,9 +134,9 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
   return (
     <section id="work" className="scroll-mt-28 bg-mm-cream py-12 text-mm-graphite sm:py-14 lg:scroll-mt-32 lg:py-16">
       <Container>
-        <div className="flex flex-col gap-5 border-b border-mm-graphite/[0.08] pb-8 sm:flex-row sm:items-end sm:justify-between sm:pb-7">
+        <div className="flex flex-col gap-5 pb-8 sm:flex-row sm:items-end sm:justify-between sm:pb-7">
           <div className="min-w-0">
-            <SectionLabel className="text-mm-royal">{homeWork.label}</SectionLabel>
+            <SectionLabel>{homeWork.label}</SectionLabel>
             <h2 className="mt-2 font-display text-2xl font-semibold leading-[1.08] tracking-tight sm:text-[clamp(1.65rem,3.2vw,2.35rem)]">
               {homeWork.headline}
             </h2>
@@ -144,7 +144,7 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
           </div>
           <Link
             href="/case-studies"
-            className="group inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-mm-royal/15 bg-mm-white/60 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-royal backdrop-blur-sm transition hover:border-mm-royal/35 hover:bg-mm-white sm:self-auto"
+            className="group inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-mm-graphite/15 bg-mm-white/60 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-graphite backdrop-blur-sm transition hover:border-mm-gold/40 hover:bg-mm-white sm:self-auto"
           >
             All work
             <HiArrowUpRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -161,8 +161,8 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
               transition={{ duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
               className={
                 many
-                  ? "group/card flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-mm-graphite/[0.07] bg-mm-white/75 shadow-[0_12px_40px_-20px_rgba(30,27,24,0.12)] backdrop-blur-sm transition duration-300 hover:border-mm-royal/18 hover:shadow-[0_20px_48px_-24px_rgba(43,33,120,0.18)]"
-                  : "group/card flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-mm-graphite/[0.07] bg-mm-white/75 shadow-[0_12px_40px_-20px_rgba(30,27,24,0.12)] backdrop-blur-sm transition duration-300 hover:border-mm-royal/18 hover:shadow-[0_20px_48px_-24px_rgba(43,33,120,0.18)] sm:flex-row sm:items-stretch"
+                  ? "group/card flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-mm-graphite/[0.07] bg-mm-white/75 shadow-[0_12px_40px_-20px_rgba(30,27,24,0.12)] backdrop-blur-sm transition duration-300 hover:border-mm-graphite/25 hover:shadow-[0_20px_48px_-24px_rgba(0,0,0,0.14)]"
+                  : "group/card flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-mm-graphite/[0.07] bg-mm-white/75 shadow-[0_12px_40px_-20px_rgba(30,27,24,0.12)] backdrop-blur-sm transition duration-300 hover:border-mm-graphite/25 hover:shadow-[0_20px_48px_-24px_rgba(0,0,0,0.14)] sm:flex-row sm:items-stretch"
               }
             >
               <Link
@@ -190,16 +190,16 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
               </Link>
 
               <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4 sm:px-5 sm:py-4">
-                <p className="text-[9px] font-semibold uppercase tracking-[0.32em] text-mm-royal/70">{item.brand}</p>
+                <p className="text-[9px] font-semibold uppercase tracking-[0.32em] text-mm-graphite/70">{item.brand}</p>
                 <h3 className="mt-1.5 font-display text-lg font-semibold leading-snug tracking-tight text-mm-graphite line-clamp-2 sm:text-[1.0625rem]">
-                  <Link href={`/case-studies/${item.slug}`} className="transition hover:text-mm-royal">
+                  <Link href={`/case-studies/${item.slug}`} className="transition hover:text-mm-graphite">
                     {item.title}
                   </Link>
                 </h3>
                 <p className="mt-2 font-editorial text-[13px] leading-relaxed text-mm-graphite/72 line-clamp-2">{item.excerpt}</p>
                 <Link
                   href={`/case-studies/${item.slug}`}
-                  className="mt-3 inline-flex w-fit items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.3em] text-mm-royal transition hover:gap-2 sm:mt-3.5"
+                  className="mt-3 inline-flex w-fit items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.3em] text-mm-graphite transition hover:gap-2 sm:mt-3.5"
                 >
                   Case file
                   <HiArrowUpRight className="h-3.5 w-3.5" aria-hidden />

@@ -17,7 +17,7 @@ const STATS = [
 /** Hopscotch “network” — oversized typography, calm navy band */
 export function HomeNetworkStatsSection() {
   return (
-    <section id="network" className="scroll-mt-28 bg-mm-royal py-16 text-mm-cream lg:scroll-mt-32 lg:py-24">
+    <section id="network" className="scroll-mt-28 bg-mm-graphite py-16 text-mm-cream lg:scroll-mt-32 lg:py-24">
       <Container className="text-center">
         <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-gold">{homeNetworkBand.label}</p>
         <h2 className="mx-auto mt-6 max-w-3xl font-display text-[clamp(1.5rem,3.5vw,2.25rem)] font-semibold leading-snug tracking-tight text-mm-cream/95">

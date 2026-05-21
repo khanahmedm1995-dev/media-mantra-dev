@@ -63,8 +63,8 @@ export function SiteHeader() {
         className={cn(
           "fixed inset-x-0 top-0 z-[120] transition-all duration-500",
           scrolled
-            ? "border-b border-mm-white/5 bg-mm-black/60 py-3 backdrop-blur-2xl"
-            : "bg-gradient-to-b from-mm-black/90 via-mm-black/25 to-transparent py-5",
+            ? "bg-mm-black/70 py-3 shadow-[0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-2xl"
+            : "bg-gradient-to-b from-mm-black/85 via-mm-black/30 to-transparent py-5",
         )}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
@@ -152,7 +152,7 @@ export function SiteHeader() {
                         onMouseEnter={cancelClose}
                         onMouseLeave={scheduleClose}
                       >
-                        <div className="overflow-hidden rounded-2xl border border-mm-white/12 bg-mm-midnight/95 shadow-[0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-2xl">
+                        <div className="overflow-hidden rounded-xl bg-mm-midnight/90 shadow-[0_24px_80px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
                           <div className="grid gap-px bg-mm-white/10 sm:grid-cols-2">
                             {item.children.map((svc) => (
                               <Link

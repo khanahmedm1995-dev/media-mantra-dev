@@ -1,44 +1,41 @@
+"use client";
+
+import { useId } from "react";
 import { cn } from "@/lib/cn";
 
 const GOLD = "#D2B450";
+/** Mantra Navy — identity manual (second “mm” pair) */
 const NAVY = "#191970";
 
 type LogoVariant = "onDark" | "onLight";
 
 /**
- * Stylized intertwined "mm" mark — mantra gold (#D2B450) + mantra navy (#191970).
- * On dark surfaces, second arches use cream/white per brand reversed lockup.
+ * Brand **mm** symbol — joined lowercase *mm*: first pair Mantra Gold, second pair Mantra Navy
+ * (Print & environment / brand applications).
  */
-export function LogoMark({ variant, className }: { variant: LogoVariant; className?: string }) {
-  const secondary = variant === "onDark" ? "#ffffe3" : NAVY;
-  /** Four rounded arches clipped to upper band — evokes brand “four arches” system */
-  const id = variant === "onDark" ? "mm-clip-dark" : "mm-clip-light";
+export function LogoMark({ variant: _variant, className }: { variant: LogoVariant; className?: string }) {
+  const clipId = `mm-band-${useId().replace(/:/g, "")}`;
 
   return (
     <svg
-      viewBox="0 0 112 54"
+      viewBox="0 0 108 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={cn("shrink-0", className)}
       aria-hidden
     >
       <defs>
-        <clipPath id={id}>
-          <rect x="2" y="0" width="108" height="36" ry="4" />
+        <clipPath id={clipId}>
+          <rect width="108" height="18" x="0" y="0" />
         </clipPath>
       </defs>
-      <g clipPath={`url(#${id})`}>
-        <ellipse cx="38" cy="52" rx="34" ry="42" fill={GOLD} />
-        <ellipse cx="74" cy="52" rx="34" ry="42" fill={secondary} />
+      <g clipPath={`url(#${clipId})`}>
+        <ellipse cx="20" cy="34" rx="19" ry="30" fill={GOLD} />
+        <ellipse cx="38" cy="34" rx="19" ry="30" fill={GOLD} />
+        <ellipse cx="62" cy="34" rx="19" ry="30" fill={NAVY} />
+        <ellipse cx="80" cy="34" rx="19" ry="30" fill={NAVY} />
       </g>
-      {/* Subtle grounding line — aligns with letterhead divider */}
-      <path
-        d="M14 52h84"
-        stroke={GOLD}
-        strokeOpacity={0.75}
-        strokeWidth={1}
-        strokeLinecap="round"
-      />
+      <path d="M10 18h88" stroke={GOLD} strokeWidth="1.15" strokeLinecap="round" opacity={0.9} />
     </svg>
   );
 }
@@ -55,7 +52,7 @@ type Props = {
 };
 
 /**
- * Brand lockup: intertwined mm + wordmark (guideline colours & reversed-on-dark behaviour).
+ * Full lockup: mm mark + “Media Mantra Global” (sans wordmark styling).
  */
 export function MediaMantraLogo({
   variant,
@@ -65,18 +62,20 @@ export function MediaMantraLogo({
   className,
 }: Props) {
   const titleClass =
-    variant === "onDark" ? "text-mm-cream group-hover:text-mm-gold" : "text-[#191970] group-hover:text-mm-royal";
-  const sub = variant === "onDark" ? "text-mm-light group-hover:text-mm-cream/90" : "text-mm-graphite";
+    variant === "onDark"
+      ? "text-mm-cream group-hover:text-mm-gold"
+      : "text-mm-graphite group-hover:text-mm-ink";
+  const sub = variant === "onDark" ? "text-mm-light group-hover:text-mm-cream/90" : "text-mm-graphite/90";
 
   return (
     <span className={cn("inline-flex flex-col items-start gap-1.5", className)}>
-      <LogoMark variant={variant} className="h-9 w-[4.85rem] sm:h-10 sm:w-[5.35rem]" />
+      <LogoMark variant={variant} className="h-9 w-[5.1rem] sm:h-10 sm:w-[5.65rem]" />
       {wordmark ? (
         captionCaps ? (
           <span
             className={cn(
               "font-display text-[9px] font-semibold uppercase tracking-[0.42em]",
-              variant === "onDark" ? "text-mm-cream" : "text-mm-royal",
+              variant === "onDark" ? "text-mm-cream" : "text-mm-graphite",
             )}
           >
             Media Mantra Global
@@ -91,7 +90,7 @@ export function MediaMantraLogo({
                 <span
                   className={cn(
                     "font-display text-[8px] font-semibold uppercase tracking-[0.38em]",
-                    variant === "onDark" ? "text-mm-gold/90" : "text-mm-royal/85",
+                    variant === "onDark" ? "text-mm-gold/90" : "text-mm-gold/90",
                   )}
                 >
                   Integrated communications
