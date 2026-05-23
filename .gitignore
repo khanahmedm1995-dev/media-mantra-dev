@@ -20,6 +20,10 @@
 # production
 /build
 
+# local PPT extract (dev only)
+/_pptx_extract/
+/_website_changes.zip
+
 # misc
 .DS_Store
 *.pem

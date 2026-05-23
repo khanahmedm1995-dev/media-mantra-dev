@@ -50,6 +50,7 @@
   --color-mm-gold: #d2b450;
   --color-mm-light: #a4a4a4;
   --color-mm-cream: #ffffe3;
+  --color-mm-brand-navy: var(--mm-brand-navy);
   --color-mm-royal: var(--mm-royal);
   --color-mm-white: #ffffff;
   --color-mm-black: var(--mm-black);
@@ -108,6 +109,24 @@ h6 {
 .mm-band-impact {
   padding-top: clamp(6rem, 14vw, 10rem);
   padding-bottom: clamp(6rem, 14vw, 10rem);
+}
+
+/* PPT: white/cream sections — headlines in brand blue */
+.mm-headline-brand-blue {
+  color: var(--mm-brand-navy);
+}
+
+/* Slow globe spin (homepage locations) */
+@keyframes mm-globe-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.mm-globe-spin {
+  animation: mm-globe-spin 72s linear infinite;
 }
 
 /* Film grain noise */

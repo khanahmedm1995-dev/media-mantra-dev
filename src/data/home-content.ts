@@ -58,6 +58,7 @@ export const homeCsrBand = {
   cta: { label: "Our approach", href: "/about" as const },
 } as const;
 
+/** Homepage band under hero — intro: white two-column layout (deck); paste final copy from Content Doc when ready. */
 export const homeExpertiseHub = {
   label: "Our trades and sectors",
   headline:
@@ -67,23 +68,12 @@ export const homeExpertiseHub = {
   follow:
     "From transformation mandates to launches, reputational arcs, visibility, retention, engagement, or category ownership — integrated is how we've always operated.",
   cta: { label: "Our expertise", href: "/services" as const },
+  /** Swap for client asset — `docs/CLIENT_IMAGE_SPECS.md` */
+  imageSrc:
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=82",
+  imageAlt: "Strategy and analytics on laptop — communications capability",
 } as const;
 
-/** Right column — sector grid (Hopscotch-style arrows) in the expertise slider band */
-export const homeExpertiseSplitSectors = [
-  { label: "Technology & platforms", href: "/industries" as const },
-  { label: "Financial services", href: "/industries" as const },
-  { label: "Consumer & retail", href: "/industries" as const },
-  { label: "Health & pharma", href: "/industries" as const },
-  { label: "Hospitality & F&B", href: "/industries" as const },
-  { label: "Energy & industrials", href: "/industries" as const },
-  { label: "Real estate", href: "/industries" as const },
-  { label: "Luxury & lifestyle", href: "/industries" as const },
-  { label: "Media & entertainment", href: "/industries" as const },
-  { label: "Institutional", href: "/industries" as const },
-  { label: "Mobility", href: "/industries" as const },
-  { label: "Public sector", href: "/industries" as const },
-] as const;
 
 export const homeNetworkBand = {
   label: "Network",
@@ -164,9 +154,11 @@ export const homeProven = {
 
 export const homeFrameworkIntro = {
   label: "Media Mantra Global Framework",
-  headline: "We built a system and that's the reason brands choose us",
+  /** Primary line — reference deck “disciplines” headline */
+  headline: "Six disciplines.",
+  headlineAccent: "One unified intelligence.",
   description: "",
-};
+} as const;
 
 /** Section 6 — work preview */
 export const homeWork = {

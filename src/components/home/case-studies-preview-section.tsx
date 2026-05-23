@@ -83,7 +83,7 @@ export function CaseStudiesPreviewSection({ featuredCount = 3, layout = "classic
           <div className="flex flex-col gap-10 pb-16 sm:flex-row sm:items-end sm:justify-between lg:gap-12">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.48em] text-mm-gold">{homeWork.sectionLabel}</p>
-              <h2 className="mt-6 font-display text-[clamp(2rem,4.5vw,3.35rem)] font-semibold leading-[1.05] tracking-tight text-mm-graphite">
+              <h2 className="mt-6 font-display text-[clamp(2rem,4.5vw,3.35rem)] font-semibold leading-[1.05] tracking-tight mm-headline-brand-blue">
                 {homeWork.headline}
               </h2>
               {homeWork.description.trim() ? (

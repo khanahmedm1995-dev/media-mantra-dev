@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/ui/container";
 import { SectionLabel } from "@/components/ui/section-label";
+import { cn } from "@/lib/cn";
 import { homeProven } from "@/data/home-content";
 
 if (typeof window !== "undefined") {
@@ -72,7 +73,7 @@ export function ProvenResultsSection({ dense = false }: ProvenResultsSectionProp
         <div className="absolute left-1/2 top-[-22%] h-[70vh] w-[70vh] -translate-x-1/2 rounded-full bg-mm-gold/10 blur-[130px] mm-mesh" />
       </div>
       <Container className="relative z-10">
-        <div className="max-w-3xl space-y-4">
+        <div className="max-w-3xl space-y-4 border-b border-mm-cream/10 pb-10">
           <SectionLabel>{homeProven.label}</SectionLabel>
           <h2 className="font-display text-[clamp(2rem,4.2vw,3.35rem)] font-semibold leading-[1.05] tracking-tight text-mm-cream">
             {homeProven.headline}
@@ -90,7 +91,10 @@ export function ProvenResultsSection({ dense = false }: ProvenResultsSectionProp
           {stats.map((s, i) => (
             <div
               key={s.key}
-              className="relative flex flex-col lg:border-l lg:border-mm-white/[0.08] lg:px-10 lg:first:border-l-0 lg:first:pl-0"
+              className={cn(
+                "relative flex flex-col lg:border-l lg:px-10 lg:first:border-l-0 lg:first:pl-0",
+                i % 2 === 0 ? "lg:border-mm-cream/[0.1]" : "lg:border-mm-gold/[0.22]",
+              )}
             >
               <p
                 data-stat-index={i}

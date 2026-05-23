@@ -32,7 +32,7 @@ export function HomeHopIntroSplit() {
           <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-gold">{sectionLabel}</p>
           <h2
             id="home-intro-split-heading"
-            className="mt-4 whitespace-pre-line font-display text-[clamp(1.65rem,3.4vw,2.45rem)] font-semibold uppercase leading-[1.08] tracking-tight text-mm-graphite"
+            className="mt-4 whitespace-pre-line font-display text-[clamp(1.65rem,3.4vw,2.45rem)] font-semibold uppercase leading-[1.08] tracking-tight mm-headline-brand-blue"
           >
             {headline}
           </h2>

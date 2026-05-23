@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HiArrowDown } from "react-icons/hi2";
 import { homeHopscotchHero } from "@/data/home-content";
 import { useContactLead } from "@/components/contact/contact-lead-context";
@@ -14,8 +14,38 @@ const HERO_VIDEO = "/videos/home-hero.mp4";
 export function HomeHeroSection() {
   const { openContact } = useContactLead();
   const ref = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  /** Browsers usually allow muted autoplay; try sound on after load, fallback to muted. */
+  const [videoMuted, setVideoMuted] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const opacityHero = useTransform(scrollYProgress, [0, 0.88], [1, 0]);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const attemptPlay = async () => {
+      v.muted = false;
+      try {
+        await v.play();
+        setVideoMuted(false);
+      } catch {
+        v.muted = true;
+        setVideoMuted(true);
+        await v.play().catch(() => {});
+      }
+    };
+
+    const onReady = () => void attemptPlay();
+
+    if (v.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+      void attemptPlay();
+    } else {
+      v.addEventListener("canplay", onReady, { once: true });
+    }
+
+    return () => v.removeEventListener("canplay", onReady);
+  }, []);
 
   const jump = (id: string) =>
     typeof document !== "undefined" && document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -34,25 +64,26 @@ export function HomeHeroSection() {
     <section
       ref={ref}
       id="home"
-      className="mm-hop-grid-bg relative isolate min-h-[100svh] min-h-[100dvh] overflow-hidden"
+      className="mm-hop-grid-bg relative isolate min-h-[100svh] min-h-[100dvh] shrink-0 overflow-x-clip overscroll-none"
       aria-label="Homepage hero"
     >
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[-4.875rem] z-0 overflow-hidden" aria-hidden>
         <video
-          className="absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 object-cover saturate-[1.05]"
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover object-center"
           src={HERO_VIDEO}
           autoPlay
-          muted
+          muted={videoMuted}
           loop
           playsInline
           preload="auto"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-mm-graphite/15 via-mm-graphite/22 to-mm-graphite/35" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-mm-graphite/12 via-mm-graphite/18 to-mm-graphite/28" />
       </div>
 
       <motion.div
         style={{ opacity: opacityHero }}
-        className="relative z-10 flex min-h-[100svh] flex-col pt-[4.75rem] lg:pt-[4rem]"
+        className="relative z-10 flex min-h-[100svh] flex-col pt-[4.875rem] lg:pt-[4.75rem]"
       >
         {showMarketingBlock ? (
           <div className="flex flex-1 flex-col justify-end px-5 pb-20 pt-10 sm:px-8 lg:pb-28">
@@ -141,6 +172,25 @@ export function HomeHeroSection() {
             <h1 className="sr-only">Media Mantra Global — integrated communications across India, UAE, and Singapore</h1>
           </div>
         )}
+
+        <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] right-5 z-20 md:bottom-8 md:right-8">
+          <button
+            type="button"
+            aria-pressed={!videoMuted}
+            aria-label={videoMuted ? "Turn sound on" : "Mute video"}
+            onClick={() => {
+              const v = videoRef.current;
+              if (!v) return;
+              const nextMuted = !videoMuted;
+              setVideoMuted(nextMuted);
+              v.muted = nextMuted;
+              void v.play();
+            }}
+            className="rounded-full border border-mm-cream/30 bg-mm-black/35 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-mm-cream backdrop-blur-md transition hover:border-mm-gold/60 hover:text-mm-gold"
+          >
+            {videoMuted ? "Sound on" : "Mute"}
+          </button>
+        </div>
 
         <motion.button
           type="button"

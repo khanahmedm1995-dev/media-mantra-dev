@@ -1,20 +1,16 @@
 import Link from "next/link";
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import {
-  footerColumns,
-  footerQuickLinks,
-  offices,
-  socialLinks,
-} from "@/data/navigation";
+import { footerQuickLinks, offices, socialLinks } from "@/data/navigation";
 import { footerSeoParagraph, footerServicesLine } from "@/data/home-content";
 import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
 import { MediaMantraLogo } from "@/components/brand/media-mantra-logo";
 
+/** Site footer — graphite (not black), concise row + legal copy (no mega column grid). */
 export function SiteFooter() {
   return (
-    <footer className="relative mt-20 bg-mm-midnight/25">
+    <footer className="relative mt-20 border-t border-mm-white/[0.07] bg-mm-graphite">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mm-gold/35 to-transparent" />
       <Container className="py-10 lg:py-14">
         <div className="flex flex-col gap-8 pb-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-x-10">
@@ -30,7 +26,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <nav className="mt-8 flex flex-wrap gap-x-8 gap-y-3" aria-label="Footer quick links">
+        <nav className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-b border-mm-white/[0.08] pb-8" aria-label="Footer quick links">
           {footerQuickLinks.map((link) => (
             <Link
               key={link.href}
@@ -42,29 +38,9 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {footerColumns.map((col) => (
-            <div key={col.title}>
-              <p className="text-[9px] font-semibold uppercase tracking-[0.32em] text-mm-gold">{col.title}</p>
-              <ul className="mt-4 space-y-2.5">
-                {col.links.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="text-sm text-mm-light transition hover:text-mm-cream"
-                    >
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
         <p className="mt-10 text-sm leading-relaxed text-mm-light/85 lg:max-w-4xl">{footerSeoParagraph}</p>
 
-        <p className="mt-6 line-clamp-3 text-sm leading-relaxed text-mm-light/85">{footerServicesLine}</p>
+        <p className="mt-6 text-sm leading-relaxed text-mm-light/80">{footerServicesLine}</p>
 
         <div className="mt-10 flex flex-wrap items-center gap-4 pt-8">
           <a

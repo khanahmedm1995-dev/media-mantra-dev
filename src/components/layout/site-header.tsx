@@ -61,12 +61,8 @@ export function SiteHeader() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[120] border-b transition-all duration-500",
-          pathname === "/" && !scrolled
-            ? "border-mm-cream/10 bg-transparent py-5 backdrop-blur-none"
-            : scrolled
-              ? "border-mm-cream/[0.06] bg-mm-graphite/55 py-3 shadow-[0_10px_36px_rgba(0,0,0,0.12)] backdrop-blur-xl"
-              : "border-mm-cream/[0.06] bg-mm-graphite/35 py-5 backdrop-blur-xl",
+          "fixed inset-x-0 top-0 z-[120] border-b border-mm-cream/[0.06] backdrop-blur-xl transition-all duration-300",
+          scrolled ? "bg-mm-graphite/95 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)]" : "bg-mm-graphite/92 py-[1.125rem]",
         )}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">

@@ -2,11 +2,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { SectionLabel } from "@/components/ui/section-label";
 import { createMetadata } from "@/lib/seo";
 import { getServiceBySlug, services } from "@/data/services";
 import { serviceDeepContent } from "@/data/service-deep-content";
 import { ServiceDetailBody } from "@/components/services/service-detail-body";
+import { HiArrowUpRight } from "react-icons/hi2";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -43,24 +43,17 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <main id="main-content" className="flex-1 bg-mm-black text-mm-cream">
-      <section
-        className={`relative isolate overflow-hidden border-b border-mm-white/10 bg-gradient-to-br ${svc.heroGradient} pt-10 lg:pt-14`}
-      >
-        <div className="absolute inset-0 bg-mm-black/40" />
-        <Container className="relative pb-20">
+      {/* Banner — service title only */}
+      <section className={`relative isolate overflow-hidden border-b border-mm-white/10 bg-gradient-to-br ${svc.heroGradient} pt-10 lg:pt-14`}>
+        <div className="absolute inset-0 bg-mm-black/55" />
+        <Container className="relative pb-16 lg:pb-20">
           <Link href="/services" className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-cream/70">
-            ← Back to Services
+            ← Services
           </Link>
-          <div className="mt-10 flex flex-wrap items-baseline gap-4">
-            <span className="font-display text-sm font-semibold text-mm-gold">
-              {String(svc.index).padStart(2, "0")}.
-            </span>
-            <SectionLabel className="text-mm-cream/80">{svc.title}</SectionLabel>
-          </div>
-          <h1 className="mt-6 max-w-4xl font-display text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.06] md:text-[clamp(2.25rem,4.5vw,3.85rem)]">
-            {svc.tagline}
+          <h1 className="mt-12 max-w-4xl font-display text-[clamp(2.2rem,5vw,3.75rem)] font-semibold uppercase leading-[1.05] tracking-[0.02em] text-mm-cream">
+            {svc.title}
           </h1>
-          <p className="mt-8 max-w-2xl font-editorial text-lg leading-relaxed text-mm-cream/95">{svc.excerpt}</p>
+          <p className="mt-6 max-w-2xl font-editorial text-base leading-relaxed text-mm-light md:text-lg">{svc.excerpt}</p>
         </Container>
       </section>
 
@@ -80,11 +73,17 @@ export default async function ServiceDetailPage({ params }: Props) {
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-mm-black via-transparent to-mm-royal/20" />
               </div>
-              <div className="mt-10 space-y-3 rounded-[1.75rem] border border-mm-white/12 bg-mm-white/[0.03] px-8 py-6 backdrop-blur-xl">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-gold">Global advisory</p>
-                <p className="font-editorial text-sm leading-relaxed text-mm-light">
-                  Every engagement routes through strategists stationed across India, UAE, & Singapore — so counsel never
-                  feels imported.
+              <div className="mt-8 space-y-4 border border-mm-white/12 bg-mm-white/[0.02] px-7 py-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-gold">How we build it</p>
+                <ul className="space-y-3 border-l border-mm-cream/20 pl-4">
+                  {svc.pillars.map((pillar) => (
+                    <li key={pillar} className="font-editorial text-sm leading-relaxed text-mm-light">
+                      {pillar}
+                    </li>
+                  ))}
+                </ul>
+                <p className="font-editorial text-xs leading-relaxed text-mm-light/80">
+                  Every engagement routes through strategists across India, UAE, &amp; Singapore.
                 </p>
               </div>
             </div>
@@ -92,38 +91,31 @@ export default async function ServiceDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="border-b border-mm-white/10 bg-mm-cream py-20 text-mm-graphite lg:py-24">
-        <Container>
-          <SectionLabel className="text-mm-royal">How we reinforce it</SectionLabel>
-          <h2 className="mt-6 font-display text-3xl font-semibold md:text-4xl">Operating pillars.</h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {svc.pillars.map((pillar) => (
-              <div key={pillar} className="rounded-2xl border border-mm-graphite/12 bg-mm-white/80 p-7 backdrop-blur">
-                <p className="font-editorial text-base leading-relaxed text-mm-graphite/90">{pillar}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-b border-mm-white/10 bg-mm-charcoal py-16">
-        <Container className="flex flex-col gap-6 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-10">
-          {[
-            { label: "Book a Strategy Call", href: "/contact" },
-            { label: "See Our Work", href: "/case-studies" },
-            { label: "Get in Touch", href: "/contact" },
-          ].map((c) => (
+      <section className="border-t border-mm-white/10 bg-mm-graphite py-14 lg:py-16">
+        <Container className="max-w-3xl">
+          <h2 className="font-display text-[clamp(1.85rem,3.5vw,2.5rem)] font-semibold leading-tight text-mm-cream">
+            Let&apos;s build your media presence
+          </h2>
+          <p className="mt-6 font-editorial text-base leading-relaxed text-mm-light/90 md:text-lg">
+            Whether you&apos;re launching, entering new markets, or tired of being the industry&apos;s best-kept secret —
+            let&apos;s talk.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
             <Link
-              key={c.label}
-              href={c.href}
-              className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.35em] text-mm-gold transition hover:text-mm-cream md:text-[13px]"
+              href="/contact"
+              className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-mm-gold"
             >
-              <span aria-hidden className="text-mm-gold">
-                →
-              </span>
-              {c.label}
+              <span aria-hidden>→</span> Get a PR strategy
+              <HiArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
-          ))}
+            <Link
+              href="/case-studies"
+              className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-mm-gold"
+            >
+              <span aria-hidden>→</span> See our work
+              <HiArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+          </div>
         </Container>
       </section>
     </main>

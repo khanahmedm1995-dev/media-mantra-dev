@@ -16,8 +16,8 @@ export function HomeContactStrip() {
     >
       <div className="mx-auto flex max-w-[920px] flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
         <div className="max-w-xl">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-gold">{homeContactStrip.label}</p>
-          <h2 className="mt-3 font-display text-xl font-semibold text-mm-graphite sm:text-2xl">{homeContactStrip.headline}</h2>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-graphite/55">{homeContactStrip.label}</p>
+          <h2 className="mt-3 font-display text-xl font-semibold sm:text-2xl mm-headline-brand-blue">{homeContactStrip.headline}</h2>
           <div className="mt-5 space-y-3 font-editorial text-base leading-relaxed text-mm-graphite/85">
             {homeContactStrip.lines.map((line) => (
               <p key={line}>{line}</p>

@@ -26,22 +26,22 @@ export function ClientsMarqueeSection() {
 
       <Container className="relative z-[1] mb-12 lg:mb-14">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-14">
-          <div className="max-w-xl">
+          <p className="max-w-md font-editorial text-[0.9375rem] leading-relaxed text-mm-graphite/72 lg:max-w-[28rem] lg:text-[1.0625rem] lg:leading-[1.65]">
+            {description}
+          </p>
+          <div className="max-w-xl lg:text-right">
             {eyebrow.trim() ? (
-              <div className="flex items-center gap-3">
-                <span className="h-px w-12 bg-gradient-to-r from-mm-gold to-mm-gold/30" aria-hidden />
+              <div className="flex items-center justify-start gap-3 lg:ml-auto lg:justify-end">
+                <span className="h-px w-12 bg-gradient-to-r from-mm-gold to-mm-gold/30 lg:order-2" aria-hidden />
                 <p className="text-[10px] font-semibold uppercase tracking-[0.42em] text-mm-gold">{eyebrow}</p>
               </div>
             ) : null}
             <h2
-              className={`font-display text-[clamp(2rem,4.2vw,2.85rem)] font-semibold uppercase leading-[1.05] tracking-[0.02em] text-mm-graphite ${eyebrow.trim() ? "mt-6" : ""}`}
+              className={`mm-headline-brand-blue font-display text-[clamp(2rem,4.2vw,2.85rem)] font-semibold uppercase leading-[1.05] tracking-[0.02em] ${eyebrow.trim() ? "mt-6" : ""}`}
             >
               {title}
             </h2>
           </div>
-          <p className="max-w-md font-editorial text-[0.9375rem] leading-relaxed text-mm-graphite/72 lg:max-w-[28rem] lg:text-right lg:text-[1.0625rem] lg:leading-[1.65]">
-            {description}
-          </p>
         </div>
       </Container>
 
