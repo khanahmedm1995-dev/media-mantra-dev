@@ -42,9 +42,9 @@ export default async function ServiceDetailPage({ params }: Props) {
   ];
 
   return (
-    <main id="main-content" className="flex-1 bg-mm-black text-mm-cream">
-      {/* Banner — service title only */}
-      <section className={`relative isolate overflow-hidden border-b border-mm-white/10 bg-gradient-to-br ${svc.heroGradient} pt-10 lg:pt-14`}>
+    <main id="main-content" className="flex-1 bg-mm-white text-mm-graphite">
+      {/* Banner — cinematic top band (deck: service name dominant); scroll area below uses white editorial canvas */}
+      <section className={`relative isolate overflow-hidden border-b border-mm-white/10 bg-gradient-to-br ${svc.heroGradient} pt-10 text-mm-cream lg:pt-14`}>
         <div className="absolute inset-0 bg-mm-black/55" />
         <Container className="relative pb-16 lg:pb-20">
           <Link href="/services" className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-cream/70">
@@ -57,21 +57,22 @@ export default async function ServiceDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="border-b border-mm-white/10 py-20 lg:py-28">
-        <Container>
-          <div className="grid gap-14 lg:grid-cols-[1.08fr_minmax(0,0.95fr)] lg:items-start lg:gap-20">
-            <ServiceDetailBody blocks={rich} />
+      <section className="border-b border-mm-graphite/10 py-20 lg:py-28">
+        <Container className="max-w-[1380px]">
+          <div className="grid gap-14 lg:grid-cols-[1.06fr_minmax(0,0.98fr)] lg:items-start lg:gap-[min(4vw,3.5rem)]">
+            <ServiceDetailBody blocks={rich} tone="light" />
             <div className="lg:sticky lg:top-40">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-mm-white/15">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-mm-graphite/10 shadow-[0_24px_80px_-44px_rgba(0,0,0,0.22)] ring-1 ring-mm-graphite/[0.06]">
                 <Image
                   src={svc.heroImage}
                   alt={svc.title}
                   fill
-                  className="object-cover"
-                  sizes="(max-width:1024px) 100vw, 36vw"
+                  className="object-cover object-center"
+                  sizes="(max-width:1024px) 100vw, 38vw"
                   priority
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-mm-black via-transparent to-mm-royal/20" />
+                {/* Light vignette only — avoids “image cut into gray void” */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-mm-graphite/15 via-transparent to-transparent" />
               </div>
             </div>
           </div>

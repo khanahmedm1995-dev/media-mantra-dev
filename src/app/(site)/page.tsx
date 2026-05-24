@@ -1,7 +1,7 @@
 import { HomeHeroSection } from "@/components/home/home-hero-section";
 import { HomeIntroExpertiseSection } from "@/components/home/home-intro-expertise-section";
 import { ClientsMarqueeSection } from "@/components/home/clients-marquee-section";
-import { ProvenResultsSection } from "@/components/home/proven-results-section";
+import { AnimatedMetricsSection } from "@/components/home/animated-metrics-section";
 import { CaseStudiesPreviewSection } from "@/components/home/case-studies-preview-section";
 import { HomeSeeWorkStrip } from "@/components/home/home-see-work-strip";
 
@@ -12,7 +12,7 @@ export default function HomePage() {
       <HomeHeroSection />
       <HomeIntroExpertiseSection />
       <ClientsMarqueeSection />
-      <ProvenResultsSection dense />
+      <AnimatedMetricsSection dense />
       <CaseStudiesPreviewSection layout="hopscotch" featuredCount={4} />
       <HomeSeeWorkStrip />
     </main>

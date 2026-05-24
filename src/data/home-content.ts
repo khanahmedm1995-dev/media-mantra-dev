@@ -113,9 +113,9 @@ export const homeClientsLead = {
 
 /** Section 5 — proven metrics */
 export const homeProven = {
-  label: "Proven results across markets",
+  label: "METRIC",
   headline: "Proven Results Across Markets",
-  intro: "",
+  intro: "Measurable impact across three commanding markets — India, UAE, and Singapore. These numbers represent real influence, documented growth, and the kind of results that change trajectories.",
   stats: [
     {
       key: "placements",
