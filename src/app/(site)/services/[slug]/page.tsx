@@ -73,19 +73,6 @@ export default async function ServiceDetailPage({ params }: Props) {
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-mm-black via-transparent to-mm-royal/20" />
               </div>
-              <div className="mt-8 space-y-4 border border-mm-white/12 bg-mm-white/[0.02] px-7 py-6">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-gold">How we build it</p>
-                <ul className="space-y-3 border-l border-mm-cream/20 pl-4">
-                  {svc.pillars.map((pillar) => (
-                    <li key={pillar} className="font-editorial text-sm leading-relaxed text-mm-light">
-                      {pillar}
-                    </li>
-                  ))}
-                </ul>
-                <p className="font-editorial text-xs leading-relaxed text-mm-light/80">
-                  Every engagement routes through strategists across India, UAE, &amp; Singapore.
-                </p>
-              </div>
             </div>
           </div>
         </Container>

@@ -34,7 +34,7 @@ export const homeHopscotchHero = {
   subline: "",
   tradeLinks: [] as readonly { label: string; href: string }[],
   discoverLabel: "",
-  discoverHref: "#intro-split" as const,
+  discoverHref: "#expertise" as const,
 } as const;
 
 /** Section 2 — homepage intro: minimal copy; full story on /about */

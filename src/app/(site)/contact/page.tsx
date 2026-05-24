@@ -3,81 +3,188 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  FaClock,
+  FaEnvelope,
+  FaGlobe,
+  FaInstagram,
+  FaLinkedinIn,
+  FaMapMarkerAlt,
+  FaPhone,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { contactPageContent } from "@/data/contact-content";
+import { socialLinks } from "@/data/navigation";
 
+/** Deck mix: banner image, white column + graphite form card; Offices not Studios; no gold “Contact” eyebrow strip. */
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const c = contactPageContent;
 
   return (
     <main id="main-content" className="flex-1">
-      <section className="relative h-[min(38vh,320px)] w-full overflow-hidden border-b border-mm-graphite/15">
+      <section className="relative h-[min(44vh,400px)] w-full overflow-hidden border-b border-mm-graphite/15">
         <Image
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=80"
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80"
           alt=""
           fill
           className="object-cover"
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-mm-graphite/90 via-mm-graphite/35 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 lg:p-12">
+        <div className="absolute inset-0 bg-gradient-to-t from-mm-graphite/95 via-mm-graphite/5 to-mm-graphite/40" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 lg:p-14">
           <Container className="max-w-[1400px]">
-            <h1 className="max-w-3xl font-display text-[clamp(2.25rem,4.5vw,3.5rem)] font-semibold uppercase leading-tight tracking-[0.02em] text-mm-cream">
-              Contact
+            <p className="text-[10px] font-semibold uppercase tracking-[0.4em] text-mm-cream/75">— {c.eyebrow}</p>
+            <h1 className="mt-5 max-w-3xl font-display text-[clamp(2rem,4.6vw,3.35rem)] font-semibold uppercase leading-[1.05] tracking-[0.02em] text-mm-cream">
+              {c.headline}
             </h1>
-            <p className="mt-4 max-w-xl font-editorial text-mm-cream/85">India · UAE · Singapore — we&apos;ll route you to the right desk.</p>
+            <p className="mt-5 max-w-2xl font-editorial text-base leading-relaxed text-mm-cream/88">{c.intro}</p>
           </Container>
         </div>
       </section>
 
-      <section className="bg-mm-white py-14 text-mm-graphite lg:py-20">
-        <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
-          <div className="space-y-10 border-b border-mm-graphite/10 pb-10 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-12">
+      <section className="relative bg-mm-white py-14 text-mm-graphite lg:py-[4.25rem]">
+        <Container className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.06fr)] lg:gap-16 xl:gap-20">
+          <div className="space-y-10 lg:pr-4">
+            <div className="space-y-6">
+              <h2 className="font-display text-xl font-semibold tracking-tight text-mm-graphite md:text-2xl">Our office</h2>
+              <ul className="space-y-4 font-editorial text-mm-graphite/82">
+                {c.officesLines.map((line) => (
+                  <li key={line} className="flex gap-3">
+                    <FaMapMarkerAlt className="mt-1 shrink-0 text-mm-brand-navy" aria-hidden />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="flex gap-3">
+                <FaPhone className="mt-0.5 shrink-0 text-mm-brand-navy" aria-hidden />
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-graphite/45">Phone</p>
+                  <a href={`tel:${c.phone.replace(/\s/g, "")}`} className="mt-2 block font-editorial text-mm-graphite hover:underline">
+                    {c.phone}
+                  </a>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <FaEnvelope className="mt-0.5 shrink-0 text-mm-brand-navy" aria-hidden />
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-graphite/45">Email</p>
+                  <a href={`mailto:${c.email}`} className="mt-2 block break-all font-editorial text-mm-brand-navy hover:underline">
+                    {c.email}
+                  </a>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <FaGlobe className="mt-0.5 shrink-0 text-mm-brand-navy" aria-hidden />
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-graphite/45">Website</p>
+                  <a href={`https://${c.websiteLabel}`} className="mt-2 block font-editorial text-mm-graphite underline-offset-2 hover:underline">
+                    {c.websiteLabel}
+                  </a>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <FaClock className="mt-0.5 shrink-0 text-mm-brand-navy" aria-hidden />
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-graphite/45">Business hours</p>
+                  <p className="mt-2 font-editorial text-sm leading-relaxed text-mm-graphite/82">{c.hours}</p>
+                </div>
+              </div>
+            </div>
+
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-graphite/50">Email</p>
-              <a href="mailto:hello@mediamantraglobal.com" className="mt-2 block text-lg text-mm-brand-navy hover:underline">
-                hello@mediamantraglobal.com
+              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-graphite/45">Careers</p>
+              <Link href="/careers" className="mt-3 inline-flex text-sm font-semibold text-mm-brand-navy underline-offset-4 hover:underline">
+                Explore opportunities →
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href={socialLinks.linkedin}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-mm-graphite/15 text-mm-graphite transition hover:border-mm-gold hover:text-mm-gold"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
+              <a
+                href={socialLinks.instagram}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-mm-graphite/15 text-mm-graphite transition hover:border-mm-gold hover:text-mm-gold"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href={socialLinks.x}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-mm-graphite/15 text-mm-graphite transition hover:border-mm-gold hover:text-mm-gold"
+                aria-label="X"
+              >
+                <FaXTwitter />
               </a>
             </div>
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-mm-graphite/50">Offices</p>
-              <p className="mt-2 max-w-sm font-editorial text-mm-graphite/80">New Delhi · Dubai · Singapore</p>
-            </div>
-            <Link href="/careers" className="inline-flex text-sm font-semibold uppercase tracking-[0.25em] text-mm-brand-navy hover:text-mm-graphite">
-              Explore careers →
-            </Link>
           </div>
 
-          <div className="rounded-[1.75rem] border border-mm-graphite/10 bg-mm-graphite px-6 py-8 text-mm-cream shadow-[0_24px_80px_-40px_rgba(0,0,0,0.35)] sm:px-8 sm:py-10">
+          <div className="rounded-[1.85rem] border border-mm-white/12 bg-mm-graphite px-6 py-9 text-mm-cream shadow-[0_32px_100px_-48px_rgba(0,0,0,0.45)] sm:px-9 sm:py-11">
+            <h2 className="font-display text-xl font-semibold text-mm-cream">Send us a message</h2>
+            <p className="mt-2 font-editorial text-sm text-mm-light">
+              Share a briefing — routing is manual and strategist-led across India, UAE, and Singapore.
+            </p>
             <form
-              className="space-y-5"
+              className="mt-10 space-y-5"
               onSubmit={(e) => {
                 e.preventDefault();
                 setSent(true);
               }}
             >
-              <label className="block text-xs uppercase tracking-[0.25em] text-mm-light">
-                Name
-                <input required className="mt-3 w-full rounded-xl border border-mm-white/15 bg-mm-black/45 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/40 focus:ring-2" />
+              <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-light">
+                Your name
+                <input
+                  required
+                  className="mt-3 w-full rounded-xl border border-mm-white/14 bg-mm-black/35 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/35 focus:ring-2"
+                />
               </label>
-              <label className="block text-xs uppercase tracking-[0.25em] text-mm-light">
-                Work Email
-                <input type="email" required className="mt-3 w-full rounded-xl border border-mm-white/15 bg-mm-black/45 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/40 focus:ring-2" />
+              <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-light">
+                Your email
+                <input
+                  type="email"
+                  required
+                  className="mt-3 w-full rounded-xl border border-mm-white/14 bg-mm-black/35 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/35 focus:ring-2"
+                />
               </label>
-              <label className="block text-xs uppercase tracking-[0.25em] text-mm-light">
-                Organization
-                <input className="mt-3 w-full rounded-xl border border-mm-white/15 bg-mm-black/45 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/40 focus:ring-2" />
+              <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-light">
+                Phone number
+                <input
+                  type="tel"
+                  className="mt-3 w-full rounded-xl border border-mm-white/14 bg-mm-black/35 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/35 focus:ring-2"
+                />
               </label>
-              <label className="block text-xs uppercase tracking-[0.25em] text-mm-light">
-                Brief Summary
-                <textarea required rows={5} className="mt-3 w-full rounded-xl border border-mm-white/15 bg-mm-black/45 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/40 focus:ring-2" />
+              <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-light">
+                Company / Organization
+                <input className="mt-3 w-full rounded-xl border border-mm-white/14 bg-mm-black/35 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/35 focus:ring-2" />
+              </label>
+              <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-light">
+                Subject
+                <input className="mt-3 w-full rounded-xl border border-mm-white/14 bg-mm-black/35 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/35 focus:ring-2" />
+              </label>
+              <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-mm-light">
+                Your message
+                <textarea required rows={5} className="mt-3 w-full rounded-xl border border-mm-white/14 bg-mm-black/35 px-4 py-3 text-sm text-mm-cream outline-none ring-mm-gold/35 focus:ring-2" />
+              </label>
+              <label className="flex gap-3 text-xs leading-snug text-mm-light/95">
+                <input type="checkbox" required className="mt-0.5" />
+                <span>I agree to the Privacy Policy and Terms regarding this inquiry.</span>
               </label>
               <Button type="submit" className="w-full">
-                Send secure note
+                Send message
               </Button>
               {sent ? (
-                <p className="text-center text-xs text-mm-gold">Message captured — strategy desk will coordinate follow-up.</p>
+                <p className="text-center text-xs text-mm-gold">Note received — coordination desk replies within two business days.</p>
               ) : null}
             </form>
           </div>

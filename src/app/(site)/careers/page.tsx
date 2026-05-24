@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { HiArrowUpRight } from "react-icons/hi2";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const ROLES = [
   { title: "Managing Consultant — Narrative Strategy", location: "Delhi" },
@@ -13,6 +14,7 @@ const ROLES = [
   { title: "Intelligence Analyst — Predictive Signals", location: "Hybrid" },
 ] as const;
 
+/** Deck/BPI-style entry row + accordion roles + inquiry form */
 export default function CareersPage() {
   const [sent, setSent] = useState(false);
 
@@ -31,16 +33,46 @@ export default function CareersPage() {
         <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 lg:p-14">
           <Container>
             <p className="text-[10px] font-semibold uppercase tracking-[0.38em] text-mm-light">Careers</p>
-            <h1 className="mt-4 max-w-3xl font-display text-[clamp(2.25rem,4.5vw,3.5rem)] font-semibold leading-tight">Culture worth experiencing</h1>
+            <h1 className="mt-4 max-w-3xl font-display text-[clamp(2.25rem,4.5vw,3.5rem)] font-semibold leading-tight">
+              Culture worth experiencing
+            </h1>
             <p className="mt-4 max-w-2xl font-editorial text-mm-cream/85">
-              We hire for craft, pace, and proof — tell us how you want to build influence.
+              We hire for craft, pace, and proof — choose a market corridor and tell us where you shine.
             </p>
           </Container>
         </div>
       </section>
 
-      <Container className="mt-14">
-        <div className="space-y-3">
+      <section className="border-b border-mm-graphite/20 bg-mm-cream py-16 text-mm-graphite lg:py-20">
+        <Container>
+          <h2 className="text-center font-display text-[clamp(1.85rem,3.8vw,2.65rem)] font-semibold text-mm-brand-navy">
+            Explore opportunities at Media Mantra Global
+          </h2>
+          <div className="mx-auto mt-11 grid max-w-3xl gap-5 md:grid-cols-2">
+            <a
+              href="#open-roles"
+              className="group flex min-h-[5.75rem] items-center justify-between gap-4 rounded-2xl border border-mm-graphite/10 bg-mm-white px-8 py-6 shadow-[0_16px_50px_-40px_rgba(0,0,0,0.35)] transition hover:border-mm-gold/50"
+            >
+              <span className="font-display text-sm font-semibold uppercase tracking-[0.1em]">Roles · India</span>
+              <HiArrowUpRight className="h-5 w-5 shrink-0 opacity-65 transition group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden />
+            </a>
+            <a
+              href="#open-roles"
+              className="group flex min-h-[5.75rem] items-center justify-between gap-4 rounded-2xl border border-mm-graphite/10 bg-mm-white px-8 py-6 shadow-[0_16px_50px_-40px_rgba(0,0,0,0.35)] transition hover:border-mm-gold/50"
+            >
+              <span className="font-display text-sm font-semibold uppercase tracking-[0.08em]">Roles · UAE &amp; Singapore</span>
+              <HiArrowUpRight className="h-5 w-5 shrink-0 opacity-65 transition group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden />
+            </a>
+          </div>
+          <p className="mx-auto mt-8 max-w-2xl text-center font-editorial text-sm text-mm-graphite/72">
+            Open mandates update often — anchor to the accordion below for Delhi, Dubai, and Singapore corridors.
+          </p>
+        </Container>
+      </section>
+
+      <Container id="open-roles" className="scroll-mt-32 pt-14">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.36em] text-mm-light">Current openings</p>
+        <div className="mt-8 space-y-3">
           {ROLES.map((r) => (
             <details
               key={r.title}
@@ -68,7 +100,7 @@ export default function CareersPage() {
         <div className="space-y-5 rounded-[2rem] border border-mm-white/10 bg-mm-white/[0.02] p-8">
           <h2 className="font-display text-xl">How we hire</h2>
           <p className="font-editorial text-mm-light">
-            Shortlist → craft conversation → scenario session with strategists → offer. Hybrid-friendly across studios.
+            Shortlist → craft conversation → scenario session with strategists → offer. Hybrid-friendly across India, UAE, and Singapore.
           </p>
           <Link href="/contact" className="inline-flex text-[11px] font-semibold uppercase tracking-[0.28em] text-mm-gold">
             Ask a question →

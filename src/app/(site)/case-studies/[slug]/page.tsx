@@ -77,13 +77,13 @@ export default async function CaseStudyDetailPage({ params }: Props) {
         </aside>
 
         <div className="space-y-20 lg:space-y-24">
-          <section id="brief" className="scroll-mt-36">
-            <h1 className="max-w-4xl font-display text-[clamp(2rem,3.8vw,2.85rem)] font-semibold leading-[1.1]">{study.title}</h1>
-            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.32em] text-mm-graphite/40">Brand</p>
-            <p className="mt-3 mm-headline-brand-blue font-display text-4xl font-semibold md:text-5xl">{study.brand}</p>
-            <div className="mt-10 max-w-3xl border-t border-mm-graphite/15 pt-10">
+          <section id="brief" className="scroll-mt-36 pb-16 text-center">
+            <h1 className="mx-auto max-w-[28rem] font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-semibold leading-[1.12]">{study.title}</h1>
+            <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.32em] text-mm-graphite/40">Brand</p>
+            <p className="mt-4 mm-headline-brand-blue font-display text-4xl font-semibold md:text-6xl">{study.brand}</p>
+            <div className="mx-auto mt-14 max-w-3xl border-t border-mm-graphite/15 pt-12">
               <h2 className="text-[10px] font-semibold uppercase tracking-[0.38em] text-mm-graphite/45">Brief</h2>
-              <p className="mt-4 font-editorial text-base leading-relaxed text-mm-graphite/80 md:text-lg">{study.excerpt}</p>
+              <p className="mt-5 font-editorial text-left text-base leading-relaxed text-mm-graphite/80 md:text-lg">{study.excerpt}</p>
             </div>
           </section>
 
