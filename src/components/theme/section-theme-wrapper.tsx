@@ -10,7 +10,7 @@ interface SectionThemeWrapperProps {
   sectionId: string;
   className?: string;
   customTheme?: ColorThemeConfig;
-  as?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
 }
 
 export function SectionThemeWrapper({
@@ -21,6 +21,7 @@ export function SectionThemeWrapper({
   as: Component = 'section',
 }: SectionThemeWrapperProps) {
   const { getSectionTheme, getThemeClasses } = useColorTheme();
+  const Tag = Component;
 
   const theme = useMemo(() => {
     return customTheme || getSectionTheme(sectionId);
@@ -42,14 +43,14 @@ export function SectionThemeWrapper({
   }, [themeClasses, className]);
 
   return (
-    <Component 
+    <Tag
       className={combinedClassName}
       data-section-id={sectionId}
       data-theme-background={theme.background}
       data-theme-headline={theme.headlineColor}
     >
       {children}
-    </Component>
+    </Tag>
   );
 }
 

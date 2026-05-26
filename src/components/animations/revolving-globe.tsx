@@ -33,7 +33,7 @@ export function RevolvingGlobe({
   variant = 'wireframe',
 }: RevolvingGlobeProps) {
   const globeRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const [isHovered, setIsHovered] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -245,7 +245,7 @@ export function SVGRevolvingGlobe({
   size = 'md',
 }: Omit<RevolvingGlobeProps, 'variant'>) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const [rotation, setRotation] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -361,7 +361,7 @@ export function SVGRevolvingGlobe({
 export function useGlobeAnimation(config: Partial<GlobeConfig> = {}) {
   const [rotation, setRotation] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   
   const finalConfig = { ...defaultConfig, ...config };
 

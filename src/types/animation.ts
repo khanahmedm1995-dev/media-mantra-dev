@@ -32,7 +32,8 @@ export interface ViewportTriggerOptions {
 }
 
 export interface AnimationState {
-  activeAnimations: Map<string, Animation>;
+  /** GSAP-driven instances registered in the engine (not the DOM `Animation` API). */
+  activeAnimations: Map<string, AnimationInstance>;
   queuedAnimations: AnimationConfig[];
   performanceMetrics: {
     fps: number;

@@ -133,7 +133,7 @@ export class VideoQualityManager {
   /**
    * Monitor video performance and adjust quality
    */
-  monitorPerformance(videoElement: HTMLVideoElement, videoId: string): void {
+  monitorPerformance(videoElement: HTMLVideoElement, videoId: string): () => void {
     let bufferingCount = 0;
     let loadStartTime = Date.now();
 

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, forwardRef } from 'react';
 import { videoQualityManager } from '@/lib/video-quality-manager';
-import { VideoConfig, VideoQuality } from '@/types/video';
+import { VideoConfig, VideoQuality, type VideoPreload } from '@/types/video';
 import { cn } from '@/lib/utils';
 
 interface OptimizedVideoPlayerProps extends Omit<React.VideoHTMLAttributes<HTMLVideoElement>, 'src'> {
@@ -54,6 +54,12 @@ export const OptimizedVideoPlayer = forwardRef<HTMLVideoElement, OptimizedVideoP
       const video = videoRef.current;
       const videoId = src;
 
+      const preloadAttr = props.preload;
+      const preload: VideoPreload =
+        preloadAttr === 'auto' || preloadAttr === 'metadata' || preloadAttr === 'none'
+          ? preloadAttr
+          : 'metadata';
+
       // Create optimized configuration
       const config: VideoConfig = {
         src,
@@ -61,7 +67,7 @@ export const OptimizedVideoPlayer = forwardRef<HTMLVideoElement, OptimizedVideoP
         muted: true, // Always start muted as per requirements
         autoplay: props.autoPlay || false,
         loop: props.loop || false,
-        preload: props.preload || 'metadata',
+        preload,
         poster,
         controls: showControls,
         playsInline: true,

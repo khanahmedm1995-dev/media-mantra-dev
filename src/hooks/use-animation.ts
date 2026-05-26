@@ -10,7 +10,7 @@ interface UseAnimationOptions extends AnimationConfig {
 }
 
 interface UseAnimationReturn {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
   start: () => Promise<void>;
   pause: () => void;
   resume: () => void;

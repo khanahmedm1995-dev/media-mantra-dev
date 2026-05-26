@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { caseStudies, getCaseStudyBySlug } from "@/data/case-studies";
+import { caseStudies, getCaseStudyBySlug, type CaseStudy } from "@/data/case-studies";
 import { createMetadata } from "@/lib/seo";
 import { CaseStudyProgressNav } from "@/components/case-study/case-study-progress-nav";
 import { Container } from "@/components/ui/container";
@@ -24,18 +24,48 @@ export async function generateMetadata({ params }: Props) {
   });
 }
 
-function CampaignVisual() {
-  const imgs = [
-    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1529333166437-af0dfc5c086c?auto=format&fit=crop&w=1200&q=80",
-  ];
+const DEFAULT_CAMPAIGN_IMAGES = [
+  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1529333166437-af0dfc5c086c?auto=format&fit=crop&w=1200&q=80",
+] as const;
+
+function CampaignGallery({ study }: { study: CaseStudy }) {
+  const imgs =
+    study.campaignImages && study.campaignImages.length > 0 ? study.campaignImages : DEFAULT_CAMPAIGN_IMAGES;
+  const clientUploads = Boolean(study.campaignImages?.length);
+
   return (
-    <section className="space-y-6">
-      {imgs.map((src) => (
-        <div key={src} className="relative aspect-[16/10] w-full overflow-hidden bg-mm-graphite/[0.06]">
-          <Image src={src} alt="" fill className="object-cover" sizes="100vw" />
-        </div>
-      ))}
+    <section className="scroll-mt-36 space-y-8" aria-label="Campaign imagery">
+      <div>
+        <h2 className="text-[10px] font-semibold uppercase tracking-[0.38em] text-mm-graphite/45">Campaign pictures</h2>
+        <p className="mt-3 max-w-2xl font-editorial text-sm text-mm-graphite/65">
+          {clientUploads
+            ? `${study.brand} — hero, retail, and storefront visuals from the mandate.`
+            : "Reference stills for this case file — replace when final art is approved."}
+        </p>
+      </div>
+      <div className="space-y-8">
+        {imgs.map((src, i) => (
+          <div
+            key={`${src}-${i}`}
+            className="relative w-full overflow-hidden rounded-2xl border border-mm-graphite/10 bg-mm-white shadow-[0_20px_55px_-42px_rgba(0,0,0,0.2)]"
+          >
+            <div
+              className={
+                clientUploads ? "relative min-h-[220px] w-full lg:min-h-[320px]" : "relative aspect-[16/10] w-full lg:aspect-[2.1/1]"
+              }
+            >
+              <Image
+                src={src}
+                alt={`${study.brand} campaign ${i + 1}`}
+                fill
+                className={clientUploads ? "object-contain object-center" : "object-cover"}
+                sizes="100vw"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -99,7 +129,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             </div>
           </section>
 
-          <CampaignVisual />
+          <CampaignGallery study={study} />
 
           <section id="execution" className="scroll-mt-36">
             <h2 className="font-display text-2xl font-semibold uppercase leading-tight tracking-tight md:text-3xl">Execution</h2>

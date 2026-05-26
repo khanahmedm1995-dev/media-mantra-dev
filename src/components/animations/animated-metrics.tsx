@@ -30,7 +30,7 @@ export function AnimatedMetric({
 }: AnimatedMetricProps) {
   const [displayValue, setDisplayValue] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const formatValue = (val: number): string => {
@@ -204,7 +204,7 @@ export function useAnimatedMetric(
 ) {
   const [displayValue, setDisplayValue] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
 
   const {
     duration = 2000,

@@ -11,6 +11,8 @@ export type CaseStudy = {
   results: { label: string; value: string }[];
   heroImage: string;
   accent: string;
+  /** Detail page gallery after “The idea” — local `/campaigns/...` paths or absolute URLs */
+  campaignImages?: readonly string[];
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -30,9 +32,14 @@ export const caseStudies: CaseStudy[] = [
       { label: "Share of gifting voice", value: "+42%" },
       { label: "Campaign velocity", value: "3 regions" },
     ],
-    heroImage:
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "/campaigns/archies/campaign-02-banner.png",
     accent: "from-mm-gold/35 to-mm-royal/30",
+    /** Add `campaign-01-event-merchandise.png` in `public/campaigns/archies/` to show the launch / ama composite as the first slide. */
+    campaignImages: [
+      "/campaigns/archies/campaign-02-banner.png",
+      "/campaigns/archies/campaign-03-retail.png",
+      "/campaigns/archies/campaign-04-storefront.png",
+    ],
   },
   {
     slug: "opg-mobility",
@@ -110,9 +117,15 @@ export const caseStudies: CaseStudy[] = [
       { label: "Social chatter", value: "+2.1×" },
       { label: "Press tours", value: "9 cities" },
     ],
-    heroImage:
-      "https://images.unsplash.com/photo-1495474472887-a785a749e9d9?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "/campaigns/barista/campaign-02-diner-interior.png",
     accent: "from-mm-gold/40 to-mm-royal/45",
+    campaignImages: [
+      "/campaigns/barista/campaign-01-team-storefront-night.png",
+      "/campaigns/barista/campaign-02-diner-interior.png",
+      "/campaigns/barista/campaign-03-press-coverage.png",
+      "/campaigns/barista/campaign-04-mountain-outdoor.png",
+      "/campaigns/barista/campaign-05-celebration.png",
+    ],
   },
 ];
 
