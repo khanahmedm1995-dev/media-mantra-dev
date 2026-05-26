@@ -17,6 +17,12 @@ export const aboutFoundersPrompt = {
   highlight: "Keep reading.",
 } as const;
 
+/** Founder portraits — shared by `/about` and `/case-studies/leadership`. */
+export const aboutFounderImages = {
+  puja: "/campaigns/leadership/campaign-01-puja-pathak.png",
+  udit: "/campaigns/leadership/campaign-02-udit-pathak.png",
+} as const;
+
 export const aboutUdit = [
   "Some people talk about disrupting an industry. Udit went ahead and did it.",
   "As one of India's youngest independent PR and communications entrepreneurs, Udit Pathak founded Media Mantra with a vision so clear it had no room for doubt and no appetite for mediocrity.",

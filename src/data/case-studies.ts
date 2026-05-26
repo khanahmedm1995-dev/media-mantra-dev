@@ -57,9 +57,14 @@ export const caseStudies: CaseStudy[] = [
       { label: "Investor meeting pipeline", value: "2.4×" },
       { label: "Policy desk sessions", value: "14" },
     ],
-    heroImage:
-      "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "/campaigns/opg-mobility/campaign-01-exhibition-booth.png",
     accent: "from-mm-royal/50 to-mm-graphite/50",
+    campaignImages: [
+      "/campaigns/opg-mobility/campaign-01-exhibition-booth.png",
+      "/campaigns/opg-mobility/campaign-02-product-spokesperson.png",
+      "/campaigns/opg-mobility/campaign-03-red-scooter-display.png",
+      "/campaigns/opg-mobility/campaign-04-connected-dashboard.png",
+    ],
   },
   {
     slug: "isma-crisis-pr",
@@ -77,9 +82,14 @@ export const caseStudies: CaseStudy[] = [
       { label: "Corrective headlines", value: "38%" },
       { label: "Leadership approvals", value: "100%" },
     ],
-    heroImage:
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "/campaigns/isma/campaign-02-sugarcane-farmer.png",
     accent: "from-mm-royal/60 to-mm-graphite/55",
+    campaignImages: [
+      "/campaigns/isma/campaign-01-smart-agri-post.png",
+      "/campaigns/isma/campaign-02-sugarcane-farmer.png",
+      "/campaigns/isma/campaign-03-et-now-dg-interview.png",
+      "/campaigns/isma/campaign-04-moneycontrol-opinion.png",
+    ],
   },
   {
     slug: "swastik-wellbeing",
@@ -97,9 +107,14 @@ export const caseStudies: CaseStudy[] = [
       { label: "Brand trust lift", value: "+31%" },
       { label: "Regional rollouts", value: "5" },
     ],
-    heroImage:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "/campaigns/swastik/campaign-02-dhyan-vihar-aerial.png",
     accent: "from-mm-graphite/50 to-mm-gold/30",
+    campaignImages: [
+      "/campaigns/swastik/campaign-01-wellness-holiday-program.png",
+      "/campaigns/swastik/campaign-02-dhyan-vihar-aerial.png",
+      "/campaigns/swastik/campaign-03-resort-swing-lifestyle.png",
+      "/campaigns/swastik/campaign-04-dining-experience.png",
+    ],
   },
   {
     slug: "barista-coffee",
@@ -229,6 +244,55 @@ export const caseStudies: CaseStudy[] = [
       "/campaigns/hartek/campaign-02-leader-rooftop-solar.png",
       "/campaigns/hartek/campaign-03-utility-scale-sunset.png",
       "/campaigns/hartek/campaign-04-floating-pv-launch.png",
+    ],
+  },
+  {
+    slug: "leadership",
+    title: "Leadership · Founder Authority & Editorial Proof",
+    brand: "Leadership",
+    category: "Founder & Leadership Branding",
+    excerpt:
+      "Executive portraits and narrative systems that translate founder credibility into rooms that matter — from investor diligence to tier-one editorial.",
+    challenge:
+      "Leaders under scrutiny need authority that reads instantly across press, panels, and search — without vanity posting or disconnected personal brands.",
+    strategy:
+      "Built editorial-grade portrait systems, POV architectures, and visibility cadences anchored in earned proof — not hype cycles.",
+    execution: ["Executive portrait direction", "Founder narrative mapping", "Media-ready positioning", "Cross-market visibility"],
+    results: [
+      { label: "Founder profiles", value: "2" },
+      { label: "Markets counselled", value: "India · UAE · SG" },
+      { label: "Editorial lanes", value: "Press → panels" },
+    ],
+    heroImage: "/campaigns/leadership/campaign-01-puja-pathak.png",
+    accent: "from-mm-gold/45 to-mm-royal/50",
+    campaignImages: [
+      "/campaigns/leadership/campaign-01-puja-pathak.png",
+      "/campaigns/leadership/campaign-02-udit-pathak.png",
+    ],
+  },
+  {
+    slug: "lpu",
+    title: "LPU · Paris Olympics & National Pride",
+    brand: "LPU",
+    category: "Education & Sports Communications",
+    excerpt:
+      "Lovely Professional University’s Paris 2024 story — from the second-largest global Olympic contingent after Stanford to on-campus honouring moments for India’s medallists.",
+    challenge:
+      "Translating a deep roster of student-athletes into a coherent national narrative without reducing individual achievements to a single headline.",
+    strategy:
+      "Led with contingent-scale proof, amplified icon moments around Neeraj Chopra and team India, and choreographed on-campus honouring ceremonies into sustained earned coverage.",
+    execution: ["Olympic contingent storytelling", "Medallist spotlight PR", "Honouring ceremony beats", "Cash award narrative"],
+    results: [
+      { label: "Paris 2024 athletes", value: "24" },
+      { label: "Global contingent rank", value: "#2" },
+      { label: "Honouring ceremonies", value: "Multi-athlete" },
+    ],
+    heroImage: "/campaigns/lpu/campaign-02-neeraj-chopra-gold.png",
+    accent: "from-mm-royal/55 to-mm-gold/40",
+    campaignImages: [
+      "/campaigns/lpu/campaign-01-paris-olympics-contingent.png",
+      "/campaigns/lpu/campaign-02-neeraj-chopra-gold.png",
+      "/campaigns/lpu/campaign-03-vinesh-phogat-ceremony.png",
     ],
   },
 ];

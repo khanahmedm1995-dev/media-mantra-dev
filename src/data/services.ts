@@ -34,8 +34,7 @@ export const services: Service[] = [
     pillars: ["Editorial proofs", "Strategic narratives", "Market transitions"],
     deliverables: ["Media mapping", "POV architectures", "Team visibility"],
     heroGradient: "from-mm-gold/40 via-mm-royal/70 to-mm-graphite",
-    heroImage:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1400&q=80",
+    heroImage: "/campaigns/leadership/campaign-02-udit-pathak.png",
   },
   {
     index: 3,

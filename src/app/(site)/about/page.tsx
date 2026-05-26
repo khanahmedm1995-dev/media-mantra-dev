@@ -6,6 +6,7 @@ import { FrameworkSection } from "@/components/home/framework-section";
 import { HiArrowUpRight } from "react-icons/hi2";
 import {
   aboutClosing,
+  aboutFounderImages,
   aboutFoundersPrompt,
   aboutHeroIntro,
   aboutPuja,
@@ -160,7 +161,7 @@ export default function AboutPage() {
             name="Puja Pathak"
             role="Founder & Director"
             paragraphs={aboutPuja}
-            imageSrc="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80"
+            imageSrc={aboutFounderImages.puja}
             imageAlt="Puja Pathak — Founder & Director, Media Mantra Global"
           />
 
@@ -168,7 +169,7 @@ export default function AboutPage() {
             name="Udit Pathak"
             role="Founder & Director"
             paragraphs={aboutUdit}
-            imageSrc="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80"
+            imageSrc={aboutFounderImages.udit}
             imageAlt="Udit Pathak — Founder & Director, Media Mantra Global"
           />
         </Container>
