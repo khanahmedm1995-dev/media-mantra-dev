@@ -127,6 +127,110 @@ export const caseStudies: CaseStudy[] = [
       "/campaigns/barista/campaign-05-celebration.png",
     ],
   },
+  {
+    slug: "blaupunkt-audio",
+    title: "Blaupunkt · Earned Authority for Everyday Audio",
+    brand: "Blaupunkt",
+    category: "Consumer Electronics",
+    excerpt:
+      "Portfolio storytelling across lifestyle audio — from hero product drops to editor reviews, authored POV, and credible creator coverage.",
+    challenge:
+      "Competing in a crowded accessory market where spec sheets blur together and trust lives with reviewers, creators, and marquee publications.",
+    strategy:
+      "Threaded product proof into tier-1 reviews, leadership-byline narratives on listening trends, and high-signal video critique that still surfaces the brand rack.",
+    execution: ["Retail & lifestyle press beats", "Authored industry POV", "Creator and long-form review arcs"],
+    results: [
+      { label: "Review & feature hits", value: "25+" },
+      { label: "Authored & op-ed slots", value: "8" },
+      { label: "Creator touchpoints", value: "12+" },
+    ],
+    heroImage: "/campaigns/blaupunkt/campaign-01-headphones-gaming-latency.png",
+    accent: "from-mm-royal/45 to-mm-graphite/55",
+    campaignImages: [
+      "/campaigns/blaupunkt/campaign-01-headphones-gaming-latency.png",
+      "/campaigns/blaupunkt/campaign-02-press-hindu-boombox.png",
+      "/campaigns/blaupunkt/campaign-03-authored-spatial-audio.png",
+      "/campaigns/blaupunkt/campaign-04-creator-sbw550-video.png",
+    ],
+  },
+  {
+    slug: "boat-middle-east",
+    title: "boAt · Middle East Launch & Ramadan Rhythm",
+    brand: "boAt",
+    category: "Consumer Electronics · Regional",
+    excerpt:
+      "UAE market entry and cultural beats — retail storytelling, Ramadan gifting, and creator-grade social proof tuned for Dubai and the wider Gulf.",
+    challenge:
+      "Breaking through a prestige-heavy wearable-audio aisle while winning share of youth culture and gifting moments during condensed seasonal peaks.",
+    strategy:
+      "Anchored arrival with unmistakable Emirates cues, layered Ramadan family narratives, localized creator relatability, and tight product glamour stills.",
+    execution: ["Launch & skyline key visual", "Seasonal gifting campaign", "City-native short-form arcs", "Product conversion assets"],
+    results: [
+      { label: "Hero market", value: "UAE" },
+      { label: "Seasonal beats", value: "Ramadan" },
+      { label: "Campaign visual sets", value: "4" },
+    ],
+    heroImage: "/campaigns/boat-middle-east/campaign-01-uae-launch.png",
+    accent: "from-mm-royal/40 to-mm-gold/35",
+    campaignImages: [
+      "/campaigns/boat-middle-east/campaign-01-uae-launch.png",
+      "/campaigns/boat-middle-east/campaign-02-ramadan-gifting.png",
+      "/campaigns/boat-middle-east/campaign-03-dubai-creator-ramadan.png",
+      "/campaigns/boat-middle-east/campaign-04-earbuds-product.png",
+    ],
+  },
+  {
+    slug: "elecrama",
+    title: "ELECRAMA · Powering the Future of Energy",
+    brand: "ELECRAMA",
+    category: "B2B Events & Infrastructure",
+    excerpt:
+      "India’s flagship electrical and energy trade forum — from arrival architecture and anchor exhibitor presence to startup pavilions and leadership moments on the floor.",
+    challenge:
+      "Cutting through a dense hall of global OEMs and utilities to keep narrative clarity, prestige, and footfall choreography across multi-day editions.",
+    strategy:
+      "Led with unmistakable ingress branding and wayfinding cues, amplified tier-one booth storytelling, stitched leadership photo-ops into earned memory, and spotlighted innovation lanes like Electraverse.",
+    execution: ["Event gateway & arrival journey", "Flagship pavilion PR", "Delegation & stakeholder stills", "Startup showcase corridor"],
+    results: [
+      { label: "Show editions pictured", value: "2023–24" },
+      { label: "Floor narratives", value: "4+" },
+      { label: "Pavilion arcs", value: "Flagship → Spark" },
+    ],
+    heroImage: "/campaigns/elecrama/campaign-01-gateway-2023.png",
+    accent: "from-mm-royal/50 to-mm-graphite/40",
+    campaignImages: [
+      "/campaigns/elecrama/campaign-01-gateway-2023.png",
+      "/campaigns/elecrama/campaign-02-eaton-booth.png",
+      "/campaigns/elecrama/campaign-03-delegation-group.png",
+      "/campaigns/elecrama/campaign-04-electraverse-startup.png",
+    ],
+  },
+  {
+    slug: "hartek",
+    title: "Hartek · Power, Renewables & Proof on the Ground",
+    brand: "Hartek",
+    category: "Power & Renewable Infrastructure",
+    excerpt:
+      "From differentiated leadership profiling to utility-scale and floating PV — aligning Mohali HQ credibility with GW-scale optics and marquee project moments.",
+    challenge:
+      "Complex energy infrastructure narratives often flatten into interchangeable EPC claims in a subsidy-sensitive, credibility-first market.",
+    strategy:
+      "Paired marquee editorial profiles with human-scale leadership visuals, cinematic plant photography, and launch-footage proof for differentiated tech (rooftop, utility, floating).",
+    execution: ["Business & regional press beats", "Founder / ED storytelling", "Site & asset imagery", "Project inauguration beats"],
+    results: [
+      { label: "Narrative lanes", value: "4" },
+      { label: "Asset classes shown", value: "Rooftop → GW" },
+      { label: "Innovation cue", value: "Floating PV" },
+    ],
+    heroImage: "/campaigns/hartek/campaign-03-utility-scale-sunset.png",
+    accent: "from-mm-gold/45 to-mm-royal/40",
+    campaignImages: [
+      "/campaigns/hartek/campaign-01-press-leadership.png",
+      "/campaigns/hartek/campaign-02-leader-rooftop-solar.png",
+      "/campaigns/hartek/campaign-03-utility-scale-sunset.png",
+      "/campaigns/hartek/campaign-04-floating-pv-launch.png",
+    ],
+  },
 ];
 
 export function getCaseStudyBySlug(slug: string) {
